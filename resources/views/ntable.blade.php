@@ -152,6 +152,7 @@
                 <td></td>
                 <td></td>  <td></td>
                 <td></td>
+                <td></td>
                 <td>{{$mas['leck']}}</td>
                 <td></td>
                 <td></td>
@@ -414,6 +415,7 @@ $prepd['all']= $prepd['all']+$ngr->pract*$ngr->podgr+$ngr->podgr*$ngr->lab+$ngr-
     @endif
     <tr class="warning kb">
 
+        <td></td>
         <td></td>
         <td></td>
         <td></td>

@@ -60,7 +60,7 @@ class student_edit extends \TCG\Voyager\Http\Controllers\VoyagerBaseController
         }
         else{
             $defgr=GruppUchzav::find($request->pr);
-
+$prikaz=Typpricaza::all();
 
                 $nagr=Student::where('grupp',$request->pr)->orderBy('fam')->get();;
 
@@ -68,7 +68,7 @@ class student_edit extends \TCG\Voyager\Http\Controllers\VoyagerBaseController
         }
 
 
-        return Voyager::view($view, compact( 'grupp','predmet','prepod','pck','nagr','defgr'));
+        return Voyager::view($view, compact( 'grupp','predmet','prepod','pck','nagr','defgr','prikaz'));
     }
     public function edit(Request $request, $id)
     {
@@ -116,7 +116,8 @@ $predmet=Predmet::all();
     $kat=Kategory::all();
     $typball=TypBall::all();
 $prikaz=Typpricaza::all();
-        return Voyager::view($view, compact('dataType', 'dataTypeContent', 'isModelTranslatable','kat','sved','predmet','typball','prikaz'));
+$defgr=GruppUchzav::find($request->pr);
+        return Voyager::view($view, compact('dataType', 'dataTypeContent', 'isModelTranslatable','kat','sved','predmet','typball','prikaz','defgr'));
     }
 
 }

@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Grupp;
+use App\GruppUchzav;
 use App\nagr;
+use App\Phistory;
+use App\Portfolio;
 use App\Sprikaz;
 use App\Studball;
 use App\Student;
@@ -12,6 +15,9 @@ use App\TipPred;
 use App\TypDann;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Relations\Relation;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Facades\Image;
 use function PHPUnit\Framework\isEmpty;
 
 class api extends Controller
@@ -173,6 +179,90 @@ class api extends Controller
             $res = Sprikaz::find($req->id);
             $res->delete();
             return $res;
+        }
+        if ($md == 18) {
+            $sgrp = Student::where('grupp', $req->grp)->get();
+
+            foreach ($sgrp as $sg) {
+
+
+                $res = new Sprikaz();
+                $res->student_id = $sg->id;
+
+
+                $res->prikaz_id = $req->tpr;
+                $res->data_pr = $req->prdate;
+                $res->name = $req->prname;
+                $res->comment = $req->prcomment;
+                $res->save();
+
+            }
+            return 1;
+        }
+        if ($md == 19) {
+            $res = Sprikaz::where('student_id', $req->id)->get();
+            foreach ($res as $sg) {
+                $sg->n = $sg->pname;
+            }
+
+            return $res;
+        }
+        if ($md == 20) {
+            $res = Student::find($req->id);
+            $res->grupp = $req->pergrp;
+            $res->save();
+            $rep = new Phistory();
+            $rep->newgr = GruppUchzav::find($req->pergrp)->name;
+            $rep->prikaz_id = $req->pprikaz;
+            $rep->prikaz_data = $req->perdate;
+            $rep->p_comment = $req->percomment;
+            $rep->oldg = $req->old;
+            $rep->save();
+            // return $res;
+        }
+        if ($md == 21) {
+            $res = Student::where('fam', 'like', '%' . $req->search . '%')->orWhere('name', 'like', '%' . $req->search . '%')->orWhere('otch', 'like', '%' . $req->search . '%')->take(20)->get();
+            $x = 0;
+            $price = [];
+            foreach ($res as &$fz) {
+                $price[$x]['id'] = $fz->gruppa->id;
+                $price[$x]['sid'] = $fz->id;
+                $price[$x]['text'] = $fz->gruppa->name . ' ' . $fz->fam . ' ' . $fz->name . ' ' . $fz->otch;
+                $x++;
+
+            }
+
+            //  return response()->json($price);
+            $resu['results'] = $price;
+            return $resu;
+
+        }
+        if ($md == 22) {
+            $res = Student::find($req->id);
+
+            if ($res->gruppa->uchgr == 1) return 1;
+            if ($res->gruppa->uchgr == null) return 1;
+            $res->delete();
+            return $res->gruppa->uchgr;
+        }
+        if ($md == 23) {
+            $user = $req->puser;
+            $imagePath = $req->file('prtffile')->store('public/' . Auth::user()->obr . '/' . $user);
+            $image = Image::make(Storage::get($imagePath))->resize(1024, null, function ($constraint) {
+                $constraint->aspectRatio();
+                $constraint->upsize();
+            })->encode('webp', 60);
+            Storage::delete($imagePath);
+            Storage::put($imagePath . '.webp', $image);
+            $portf = new Portfolio();
+            $portf->student_id = $user;
+            $portf->dat = $req->prtfdate;
+            $portf->name = $req->prtfname;
+            $portf->comment = $req->prtfcomment;
+            $portf->img=$req->$imagePath . '.webp';
+            //$portf-> podrazdel;
+            $portf->save();
+            return $portf;
         }
 
     }

@@ -13,7 +13,7 @@
 
 @section('page_header')
     <h1 class="page-title">
-        <i class="{{ $dataType->icon }}"></i>
+        <i class="voyager-people"></i>
         Данные студента: {{$dataTypeContent->fam}} {{$dataTypeContent->name}} {{$dataTypeContent->otch}}
     </h1>
     @include('voyager::multilingual.language-selector')
@@ -35,18 +35,71 @@
 
                 <a data-toggle="tab" href="#prk">Приказы</a>
             </li>
+
             @foreach ($kat as $kt)
                 <li>
                     <a data-toggle="tab" href="#dop{{$kt->id}}">{{$kt->name}}</a>
                 </li>
             @endforeach
+            <li>
 
+                <a data-toggle="tab" href="#prtf">Портфолио</a>
+            </li>
 
         </ul>
 
 
         <div class="tab-content">
+            <div class="tab-pane" id="prtf">
+                <div class="panel panel-bordered">
 
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    <div class="btn-group" role="group" aria-label="Операции">
+                                        <button class="btn btn-info  btn-lg" id="addsprtf" data-id="1"><i
+                                                class="voyager-plus"></i>Добавить документ
+                                        </button>
+                                        <button class="btn btn-default btn-lg sprtfedit"><i class="voyager-edit"></i>
+                                            Изменить
+                                        </button>
+                                        <button class="btn btn-danger  btn-lg sprtfdelet"><i class="voyager-trash"></i>
+                                            Удалить
+                                        </button>
+
+                                    </div>
+
+
+                                    <button class="btn btn-info  btn-lg pull-right" id="print"><i
+                                            class="voyager-receipt"></i>
+                                        Печать
+                                    </button>
+
+
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <table class="table table-hover table-bordered">
+                        <thead>
+                        <tr>
+                            <th>Название</th>
+                            <th>Дата</th>
+                            <th>Комментарий</th>
+                            <th>Изображение</th>
+                        </tr>
+                        </thead>
+                        <tbody id="sportf">
+
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
             <div class="tab-pane" id="prk">
                 <div class="panel panel-bordered">
 
@@ -376,6 +429,7 @@
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-xs-12">
+                            <label>Тип свойств</label>
                             <input type="hidden" id="user" value="{{$dataTypeContent->id}}">
                             <select id="ssv" class="form-control">
 
@@ -389,6 +443,7 @@
                     </div>
                     <div class="row">
                         <div class="col-xs-12">
+                            <label>Комментарий</label>
                             <textarea id="comm" class="form-control"></textarea>
                         </div>
                     </div>
@@ -496,7 +551,7 @@
                     <div class="row">
                         <div class="col-xs-12">
                             <input type="hidden" id="puser" value="{{$dataTypeContent->id}}">
-                            <input type="hidden" id="pbid" value="-1">
+                            <input type="hidden" id="prtpbid" value="-1">
                             <select id="tpr" class="form-control">
 @foreach($prikaz as $pr)
     <option value="{{$pr->id}}">{{$pr->name}}</option>
@@ -532,6 +587,60 @@
                             data-dismiss="modal">{{ __('voyager::generic.cancel') }}</button>
                     <button type="button" class="btn btn-info" id="saveprk">Добавить</button>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- добавить потфолио -->
+    <div class="modal fade modal-info" id="add_portfolio">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"
+                            aria-hidden="true">&times;
+                    </button>
+                    <h4 class="modal-title"><i class="voyager-warning"></i> Добавить потфолио</h4>
+                </div>
+<form method="post" action="{{url('admin/api')}}" id="iprf">
+    <input type="hidden" id="puser" name="puser" value="{{$dataTypeContent->id}}">
+    <input type="hidden" name="md" value="23">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <label>Файл</label>
+                            <input type="file" id="prtffile" name="prtffile" class="form-control" accept="image/jpeg">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <label>Название</label>
+                            <input type="text" id="prtfname" name="prtfname" class="form-control">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <label>Дата Портфолио</label>
+                            <input type="date" id="prtfdate" name="prtfdate" class="form-control">
+                        </div>
+                    </div>
+                    {{ csrf_field() }}
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <label> Комментарии</label>
+                            <textarea id="prtfcomment" name="prtfcomment" class="form-control"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <input type="hidden" id="iid" value="-1">
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default"
+                            data-dismiss="modal">{{ __('voyager::generic.cancel') }}</button>
+                    <button type="submit" class="btn btn-info" >Добавить</button>
+                </div>
+</form>
             </div>
         </div>
     </div>
@@ -609,8 +718,31 @@ var defpr=0;
         }
 
         $('document').ready(function () {
+
+            $('#iprf').ajaxForm({
+                beforeSend: function() {
+                    $('#add_portfolio').modal('hide');
+$('#voyager-loader').show();
+                },
+                success: function() {
+
+                },
+                complete: function(xhr) {
+                    $('#voyager-loader').hide();
+
+
+                }
+            });
+
+
             $('.toggleswitch').bootstrapToggle();
             $('#predmet').select2();
+
+            $('#addsprtf').click(function () {//добавить приказ
+                $('#prtpbid').val(-1);
+                $('#add_portfolio').modal('show');
+
+            });
 
             $('#addprk').click(function () {//добавить приказ
                 $('#pbid').val(-1);
@@ -663,8 +795,9 @@ var defpr=0;
                     'prcomment':$('#prcomment').val(),
                     '_token': '{{ csrf_token() }}'
                 }, function (data) {
-               loadprikaz({{$dataTypeContent->id}});
+
                     $('#add_prikaz').modal('hide');
+                    loadprikaz({{$dataTypeContent->id}});
                 });
             });
 
@@ -798,10 +931,11 @@ var defpr=0;
                     $('#ssv').prop('disabled', true);
                     res = data.dop.variant;
                     $('#inpp').empty();
-                    if (res == 0) $('#inpp').append('<input type="text" id="value" class="form-control">');
+
+                    if (res == 0) $('#inpp').append('<input type="text" id="value" class="form-control" placeholder="Значение">');
                     if (res == 1) $('#inpp').append('<input type="date" id="value" class="form-control">');
-                    if (res == 2) $('#inpp').append('<input type="datetime-local" id="value" class="form-control">');
-                    if (res == 3) $('#inpp').append('<textarea id="value" class="form-control"></textarea>');
+                    if (res == 2) $('#inpp').append('<input type="datetime-local" id="value" class="form-control" placeholder="Значение">');
+                    if (res == 3) $('#inpp').append('<textarea id="value" class="form-control" placeholder="Значение"></textarea>');
                     $('#comm').val(data.comment)
                     $('#iid').val(data.id);
 

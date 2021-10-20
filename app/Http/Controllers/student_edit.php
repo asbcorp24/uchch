@@ -60,13 +60,13 @@ class student_edit extends \TCG\Voyager\Http\Controllers\VoyagerBaseController
         }
         else{
             $defgr=GruppUchzav::find($request->pr);
-$prikaz=Typpricaza::all();
+
 
                 $nagr=Student::where('grupp',$request->pr)->orderBy('fam')->get();;
 
 
         }
-
+        $prikaz=Typpricaza::all();
 
         return Voyager::view($view, compact( 'grupp','predmet','prepod','pck','nagr','defgr','prikaz'));
     }
@@ -109,7 +109,7 @@ $prikaz=Typpricaza::all();
         // Eagerload Relations
         $this->eagerLoadRelations($dataTypeContent, $dataType, 'edit', $isModelTranslatable);
 
-        $view = 'voyager::bread.edit-add';
+
 $sved=StudentSved::where('student_id',$dataTypeContent->id)->get();
 $predmet=Predmet::all();
             $view = "student_edit";
@@ -117,6 +117,7 @@ $predmet=Predmet::all();
     $typball=TypBall::all();
 $prikaz=Typpricaza::all();
 $defgr=GruppUchzav::find($request->pr);
+
         return Voyager::view($view, compact('dataType', 'dataTypeContent', 'isModelTranslatable','kat','sved','predmet','typball','prikaz','defgr'));
     }
 

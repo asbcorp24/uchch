@@ -259,11 +259,25 @@ class api extends Controller
             $portf->dat = $req->prtfdate;
             $portf->name = $req->prtfname;
             $portf->comment = $req->prtfcomment;
-            $portf->img=$req->$imagePath . '.webp';
+            $imagePath = explode('/',$imagePath);
+
+           $imagePath = end($imagePath);
+            $portf->img=Auth::user()->obr . '/' . $user.'/'.$imagePath . '.webp';
             //$portf-> podrazdel;
             $portf->save();
             return $portf;
         }
-
+        if ($md == 24) {
+            $id = $req->id;
+            $res=Portfolio::where('student_id',$id)->get();
+            return $res;
+        }
+        if ($md == 25) {
+            $id = $req->id;
+            $res=Portfolio::find($id);
+            Storage::delete('public'.'/'.$res->img);
+            $res->delete();
+            return asset ('storage').'/'.$res->img;
+        }
     }
 }

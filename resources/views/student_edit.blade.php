@@ -62,9 +62,7 @@
                                         <button class="btn btn-info  btn-lg" id="addsprtf" data-id="1"><i
                                                 class="voyager-plus"></i>Добавить документ
                                         </button>
-                                        <button class="btn btn-default btn-lg sprtfedit"><i class="voyager-edit"></i>
-                                            Изменить
-                                        </button>
+                                      
                                         <button class="btn btn-danger  btn-lg sprtfdelet"><i class="voyager-trash"></i>
                                             Удалить
                                         </button>
@@ -87,10 +85,10 @@
                     <table class="table table-hover table-bordered">
                         <thead>
                         <tr>
-                            <th>Название</th>
                             <th>Дата</th>
-                            <th>Комментарий</th>
+                            <th>Название</th>
                             <th>Изображение</th>
+                            <th>Комментарий</th>
                         </tr>
                         </thead>
                         <tbody id="sportf">
@@ -150,7 +148,6 @@
                 </div>
 
             </div>
-
 
 
             <div class="tab-pane" id="usp">
@@ -553,31 +550,31 @@
                             <input type="hidden" id="puser" value="{{$dataTypeContent->id}}">
                             <input type="hidden" id="prtpbid" value="-1">
                             <select id="tpr" class="form-control">
-@foreach($prikaz as $pr)
-    <option value="{{$pr->id}}">{{$pr->name}}</option>
+                                @foreach($prikaz as $pr)
+                                    <option value="{{$pr->id}}">{{$pr->name}}</option>
                                 @endforeach
                             </select>
                         </div>
                     </div>
 
-                        <div class="row">
-                            <div class="col-xs-12">
+                    <div class="row">
+                        <div class="col-xs-12">
                             <label>Дата приказа</label>
-                                <input type="date" id="prdate" class="form-control">
-                            </div>
+                            <input type="date" id="prdate" class="form-control">
                         </div>
+                    </div>
 
 
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <label>Название приказа</label>
-                                <input type="text" id="prname" class="form-control">
-                            </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <label>Название приказа</label>
+                            <input type="text" id="prname" class="form-control">
+                        </div>
                     </div>
                     <div class="row">
                         <div class="col-xs-12">
                             <label> Комментарии</label>
-                           <textarea id="prcomment" class="form-control"></textarea>
+                            <textarea id="prcomment" class="form-control"></textarea>
                         </div>
                     </div>
                 </div>
@@ -602,45 +599,46 @@
                     </button>
                     <h4 class="modal-title"><i class="voyager-warning"></i> Добавить потфолио</h4>
                 </div>
-<form method="post" action="{{url('admin/api')}}" id="iprf">
-    <input type="hidden" id="puser" name="puser" value="{{$dataTypeContent->id}}">
-    <input type="hidden" name="md" value="23">
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <label>Файл</label>
-                            <input type="file" id="prtffile" name="prtffile" class="form-control" accept="image/jpeg">
+                <form method="post" action="{{url('admin/api')}}" id="iprf">
+                    <input type="hidden" id="puser" name="puser" value="{{$dataTypeContent->id}}">
+                    <input type="hidden" name="md" value="23">
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <label>Файл</label>
+                                <input type="file" id="prtffile" name="prtffile" class="form-control" required
+                                       accept="image/jpeg">
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <label>Название</label>
-                            <input type="text" id="prtfname" name="prtfname" class="form-control">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <label>Название</label>
+                                <input type="text" id="prtfname" name="prtfname" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <label>Дата Портфолио</label>
+                                <input type="date" id="prtfdate" name="prtfdate" class="form-control" required>
+                            </div>
+                        </div>
+                        {{ csrf_field() }}
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <label> Комментарии</label>
+                                <textarea id="prtfcomment" name="prtfcomment" class="form-control" required></textarea>
+                            </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <label>Дата Портфолио</label>
-                            <input type="date" id="prtfdate" name="prtfdate" class="form-control">
-                        </div>
-                    </div>
-                    {{ csrf_field() }}
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <label> Комментарии</label>
-                            <textarea id="prtfcomment" name="prtfcomment" class="form-control"></textarea>
-                        </div>
-                    </div>
-                </div>
-                <input type="hidden" id="iid" value="-1">
+                    <input type="hidden" id="iid" value="-1">
 
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default"
-                            data-dismiss="modal">{{ __('voyager::generic.cancel') }}</button>
-                    <button type="submit" class="btn btn-info" >Добавить</button>
-                </div>
-</form>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default"
+                                data-dismiss="modal">{{ __('voyager::generic.cancel') }}</button>
+                        <button type="submit" class="btn btn-info">Добавить</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
@@ -653,7 +651,9 @@
         var defstr = 0;
         var kurs = 1;
         var defbl = 0;
-var defpr=0;
+        var defpr = 0;
+        var defport = 0;
+
         function loadball(sem, id) {
             $.post('{{url('admin/api')}}', {
                 'md': 6,
@@ -672,6 +672,25 @@ var defpr=0;
                 defbl = 0;
             });
         }
+
+        function loadportf(razd, id) {
+            $.post('{{url('admin/api')}}', {
+                'md': 24,
+                'id': id,
+                'razd': razd,
+                '_token': '{{ csrf_token() }}'
+            }, function (data) {
+                //sportf
+                $('#sportf').empty();
+                data.forEach(function (item) {
+                    $('#sportf').append('<tr data-id="' + item.id + '" class="zzdptf"><td>' + item.dat + '</td><td>' + item.name + '</td><td><a data-fslightbox class="btn btn-info btn-sm" href="{{ asset ('storage')}}/' + item.img + '">просмотр</a></td><td>' + item.comment + '</td></tr>');
+
+                })
+                refreshFsLightbox();
+                defport = 0;
+            });
+        }
+
         function loadprikaz(id) { //загрузка приказов в таблицу
             $.post('{{url('admin/api')}}', {
                 'md': 15,
@@ -681,14 +700,15 @@ var defpr=0;
             }, function (data) {
                 $('#iprikaz').empty();
                 data.forEach(function (item) {
-                    if (item.name!= null) bl = item.pname.name;
+                    if (item.name != null) bl = item.pname.name;
                     $('#iprikaz').append('<tr data-id="' + item.id + '" class="pzzd"><td>' + bl + '</td><td>' + item.data_pr + '</td><td>' + item.name + '</td><td>' + item.comment + '</td></tr>');
 
                 })
 
-                defpr=0;
+                defpr = 0;
             });
         }
+
         $('body').on('click', '.pzzd', function () { //расскрасим приказы
             if ($(this).data('id') != null)
                 defpr = $(this).data('id'); else defpr = 0;
@@ -699,6 +719,7 @@ var defpr=0;
 
 
         });
+
         function deleteHandler(tag, isMulti) {
             return function () {
                 $file = $(this).siblings(tag);
@@ -720,16 +741,16 @@ var defpr=0;
         $('document').ready(function () {
 
             $('#iprf').ajaxForm({
-                beforeSend: function() {
+                beforeSend: function () {
                     $('#add_portfolio').modal('hide');
-$('#voyager-loader').show();
+                    $('#voyager-loader').show();
                 },
-                success: function() {
+                success: function () {
 
                 },
-                complete: function(xhr) {
+                complete: function (xhr) {
                     $('#voyager-loader').hide();
-
+                    loadportf(0,{{$dataTypeContent->id}});
 
                 }
             });
@@ -737,7 +758,17 @@ $('#voyager-loader').show();
 
             $('.toggleswitch').bootstrapToggle();
             $('#predmet').select2();
-
+            $('.sprtfdelet').click(function () {//добавить приказ
+                if (defport < 1) return;
+                $.post('{{url('admin/api')}}', {
+                    'md': 25,
+                    'id': defport,
+                    '_token': '{{ csrf_token() }}'
+                }, function (data) {
+                    loadportf(0,{{$dataTypeContent->id}});
+                    defport = 0;
+                });
+            });
             $('#addsprtf').click(function () {//добавить приказ
                 $('#prtpbid').val(-1);
                 $('#add_portfolio').modal('show');
@@ -760,11 +791,11 @@ $('#voyager-loader').show();
                 }, function (data) {
                     console.log(data);
                     $('#comment1').empty();
-                    if(data.length==0) {
+                    if (data.length == 0) {
                         toastr.error('На данный семестр нет нагрузки!')
 
                         $('#savengr_add').hide();
-                    } else   $('#savengr_add').show();
+                    } else $('#savengr_add').show();
 
                 });
             });
@@ -788,11 +819,11 @@ $('#voyager-loader').show();
                     'md': 14,
                     'pid': $('#pbid').val(),
                     'puser': $('#puser').val(),
-                    'prdate':$('#prdate').val(),
-                    'tpr':$('#tpr').val(),
+                    'prdate': $('#prdate').val(),
+                    'tpr': $('#tpr').val(),
                     'stud':{{$dataTypeContent->id}},
-                    'prname':$('#prname').val(),
-                    'prcomment':$('#prcomment').val(),
+                    'prname': $('#prname').val(),
+                    'prcomment': $('#prcomment').val(),
                     '_token': '{{ csrf_token() }}'
                 }, function (data) {
 
@@ -832,7 +863,7 @@ $('#voyager-loader').show();
                     '_token': '{{ csrf_token() }}'
                 }, function (data) {
                     $('#bod' + data.tp).find('tr.info').remove();
-                    defstr=0;
+                    defstr = 0;
                 });
             });
             $('.balldelet').click(function () {//удалить оценку
@@ -844,7 +875,7 @@ $('#voyager-loader').show();
                     '_token': '{{ csrf_token() }}'
                 }, function (data) {
                     $('body').find('tr.warning').remove();
-                    defbl=0;
+                    defbl = 0;
                 });
             });
             $('.prkdelet').click(function () {//удалить приказ
@@ -856,7 +887,7 @@ $('#voyager-loader').show();
                     '_token': '{{ csrf_token() }}'
                 }, function (data) {
                     $('body').find('tr.wpk').remove();
-                    defpr=0;
+                    defpr = 0;
                 });
             });
 
@@ -951,6 +982,14 @@ $('#voyager-loader').show();
 
 
             });
+            $('body').on('click', '.zzdptf', function () {
+                if ($(this).data('id') != null)
+                    defport = $(this).data('id'); else defport = 0;
+                $('.zzdptf').removeClass('warning');
+                $(this).addClass('warning');
+
+            });
+
             $('body').on('click', '.zzp', function () {
                 if ($(this).data('id') != null)
                     defstr = $(this).data('id'); else defstr = 0;
@@ -1063,6 +1102,7 @@ $('#voyager-loader').show();
             });
             $('[data-toggle="tooltip"]').tooltip();
             loadprikaz({{$dataTypeContent->id}});
+            loadportf(0,{{$dataTypeContent->id}});
         });
     </script>
 @stop

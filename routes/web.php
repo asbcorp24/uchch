@@ -19,6 +19,8 @@ Route::get('login','u_login@show');//->middleware('userin');;
 Route::post('login','u_login@login');//->middleware('userin');;
 Route::get('pnagr','u_nagr@index');//->middleware('userin');;
 Route::get('setgod','u_api@setgod');//->middleware('userin');;
+Route::get('uspev/{grupp?}/{predmet?}','u_uspev@index');
+
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();

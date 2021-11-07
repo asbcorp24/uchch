@@ -95,7 +95,7 @@
                                             <div class="row">
                                                 <div class="col-lg-5">
                                                     <a href="{{url('pnagr')}}" class="dropdown-item">Нагрузка</a>
-                                                    <a href="ui-badge.html" class="dropdown-item">Badge</a>
+                                                    <a href="{{url('uspev')}}" class="dropdown-item">Прогула и успеваемость</a>
                                                     <a href="ui-buttons.html" class="dropdown-item">Buttons</a>
                                                     <a href="ui-cards.html" class="dropdown-item">Cards</a>
                                                     <a href="ui-dropdowns.html" class="dropdown-item">Dropdowns</a>
@@ -201,7 +201,7 @@
 
                             <li class="nav-item dropdown pull-right">
                                 <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-more" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Текущий год: {{\App\God::find(\Illuminate\Support\Facades\Session::get('god',0))->nazv}} <div class="arrow-down"></div>
+                                    Текущий год: {{Auth::user()}} <div class="arrow-down"></div>
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="topnav-more">
                             @foreach(\App\God::all() as $gd)

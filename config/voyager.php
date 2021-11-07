@@ -195,7 +195,7 @@ return [
     'additional_js' => [
         'js/printThis.js',
         'js/jquery.cookie.js',
-        'js/select2.full.min.js','js/jquery.form.min.js'
+        'js/select2.full.min.js','js/jquery.form.min.js','js/fslightbox.js'
     ],
 
     'googlemaps' => [

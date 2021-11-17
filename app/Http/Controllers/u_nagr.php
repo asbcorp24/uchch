@@ -15,7 +15,7 @@ class u_nagr extends Controller
         $prep=Session::get('userid',-1);
        $nagr=nagr::withoutGlobalScope(AncientScope::class)->withoutGlobalScope(godScope::class)->select('nagr.*')->join('grupp',function ($join){
             $join->on('nagr.grupp', '=', 'grupp.id');
-        })->where('prepod',$prep)->where('nagr.obr',Auth::user()->obr)->where('nagr.god', Session::get('god',0))->orderBy('semestr')->orderBy('predmet')->orderBy('kommerc')->get();;
+        })->where('prepod',$prep)->where('nagr.obr',Auth::user()->obr)->where('nagr.god', Session::get('god',0))->orderBy('semestru_nagr.php')->orderBy('predmet')->orderBy('kommerc')->get();;
 
         return   view('front/nagr',compact( 'nagr'));
     }

@@ -96,7 +96,7 @@
                                                 <div class="col-lg-5">
                                                     <a href="{{url('pnagr')}}" class="dropdown-item">Нагрузка</a>
                                                     <a href="{{url('uspev')}}" class="dropdown-item">Прогула и успеваемость</a>
-                                                    <a href="ui-buttons.html" class="dropdown-item">Buttons</a>
+                                                    <a href="{{url('vedomost_add')}}" class="dropdown-item">Ведомости</a>
                                                     <a href="ui-cards.html" class="dropdown-item">Cards</a>
                                                     <a href="ui-dropdowns.html" class="dropdown-item">Dropdowns</a>
                                                     <a href="ui-navs.html" class="dropdown-item">Navs</a>
@@ -111,97 +111,11 @@
                                 </div>
                             </li>
 
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-components" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Components <div class="arrow-down"></div>
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="topnav-components">
-                                    <div class="dropdown">
-                                        <a class="dropdown-item dropdown-toggle arrow-none" href="#" id="topnav-email" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <div class="d-inline-block icons-sm mr-2"><i class="uim uim-comment-message"></i></div> Email
-                                            <div class="arrow-down"></div>
-                                        </a>
-                                        <div class="dropdown-menu" aria-labelledby="topnav-email">
-                                            <a href="email-inbox.html" class="dropdown-item">Inbox</a>
-                                            <a href="email-read.html" class="dropdown-item">Email Read</a>
-                                            <a href="email-compose.html" class="dropdown-item">Email Compose</a>
-                                        </div>
-                                    </div>
-                                    <a href="calendar.html" class="dropdown-item">
-                                        <div class="d-inline-block icons-sm mr-2"><i class="uim uim-schedule"></i></div> Calendar</a>
-                                    <div class="dropdown">
-                                        <a class="dropdown-item dropdown-toggle arrow-none" href="#" id="topnav-icon" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <div class="d-inline-block icons-sm mr-2"><i class="uim uim-object-ungroup"></i></div>Icons
-                                            <div class="arrow-down"></div>
-                                        </a>
-                                        <div class="dropdown-menu" aria-labelledby="topnav-icon">
-                                            <a href="icons-materialdesign.html" class="dropdown-item">Material Design</a>
-                                            <a href="icons-dripicons.html" class="dropdown-item">Dripicons</a>
-                                            <a href="icons-fontawesome.html" class="dropdown-item">Font awesome 5</a>
-                                            <a href="icons-themify.html" class="dropdown-item">Themify</a>
-                                            <a href="icons-unicons.html" class="dropdown-item">Unicons - Dual Tone</a>
-                                        </div>
-                                    </div>
-                                    <div class="dropdown">
-                                        <a class="dropdown-item dropdown-toggle arrow-none" href="#" id="topnav-table" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <div class="d-inline-block icons-sm mr-2"><i class="uim uim-table"></i></div>Tables
-                                            <div class="arrow-down"></div>
-                                        </a>
-                                        <div class="dropdown-menu" aria-labelledby="topnav-table">
-                                            <a href="tables-basic.html" class="dropdown-item">Basic Tables</a>
-                                            <a href="tables-datatable.html" class="dropdown-item">Data Tables</a>
-                                            <a href="tables-responsive.html" class="dropdown-item">Responsive Table</a>
-                                            <a href="tables-editable.html" class="dropdown-item">Editable Table</a>
-                                        </div>
-                                    </div>
-                                    <div class="dropdown">
-                                        <a class="dropdown-item dropdown-toggle arrow-none" href="#" id="topnav-form" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <div class="d-inline-block icons-sm mr-2"><i class="uim uim-document-layout-left"></i></div>Forms
-                                            <div class="arrow-down"></div>
-                                        </a>
-                                        <div class="dropdown-menu" aria-labelledby="topnav-form">
-                                            <a href="form-elements.html" class="dropdown-item">Form Elements</a>
-                                            <a href="form-validation.html" class="dropdown-item">Form Validation</a>
-                                            <a href="form-advanced.html" class="dropdown-item">Form Advanced</a>
-                                            <a href="form-editors.html" class="dropdown-item">Form Editors</a>
-                                            <a href="form-uploads.html" class="dropdown-item">Form File Upload</a>
-                                            <a href="form-mask.html" class="dropdown-item">Form Mask</a>
-                                            <a href="form-summernote.html" class="dropdown-item">Summernote</a>
-                                        </div>
-                                    </div>
 
-                                    <div class="dropdown">
-                                        <a class="dropdown-item dropdown-toggle arrow-none" href="#" id="topnav-chart" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <div class="d-inline-block icons-sm mr-2"><i class="uim uim-chart-pie"></i></div>Charts
-                                            <div class="arrow-down"></div>
-                                        </a>
-                                        <div class="dropdown-menu" aria-labelledby="topnav-chart">
-                                            <a href="charts-morris.html" class="dropdown-item">Morris</a>
-                                            <a href="charts-apex.html" class="dropdown-item">Apex</a>
-                                            <a href="charts-chartist.html" class="dropdown-item">Chartist</a>
-                                            <a href="charts-chartjs.html" class="dropdown-item">Chartjs</a>
-                                            <a href="charts-flot.html" class="dropdown-item">Flot</a>
-                                            <a href="charts-sparkline.html" class="dropdown-item">Sparkline</a>
-                                            <a href="charts-knob.html" class="dropdown-item">Jquery Knob</a>
-                                        </div>
-                                    </div>
-
-                                    <div class="dropdown">
-                                        <a class="dropdown-item dropdown-toggle arrow-none" href="#" id="topnav-maps" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <div class="d-inline-block icons-sm mr-2"><i class="uim uim-comment-plus"></i></div>Maps
-                                            <div class="arrow-down"></div>
-                                        </a>
-                                        <div class="dropdown-menu" aria-labelledby="topnav-maps">
-                                            <a href="maps-google.html" class="dropdown-item">Google map</a>
-                                            <a href="maps-vector.html" class="dropdown-item">Vector map</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
 
                             <li class="nav-item dropdown pull-right">
                                 <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-more" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Текущий год: {{Auth::user()}} <div class="arrow-down"></div>
+                                    Текущий год: <div class="arrow-down"></div>
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="topnav-more">
                             @foreach(\App\God::all() as $gd)

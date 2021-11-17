@@ -25,13 +25,12 @@ class u_login extends Controller
         $user = Prepod::withoutGlobalScope(AncientScope::class)->where('password', $req->userpassword)->get()->first();
         $not = "";
      if ($user == null) return view('front/auth-login');
-
-        Auth::loginUsingId(0);
-       Auth::user()->obr=$user->obr;
-
-
-        $god = God::all()->last();
         Session::put('obr', $user->obr);
+
+
+
+        $god = God::withoutGlobalScope(AncientScope::class)->where('obr',$user->obr)->get()->last();
+
         Session::put('god', $god->id);
         Session::put('userid', $user->id);
         Session::put('username', $user->fam . ' ' . $user->name . ' ' . $user->othc);

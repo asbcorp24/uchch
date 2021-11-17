@@ -5,7 +5,9 @@ namespace App\Scopes;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Scope;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class AncientScope implements Scope
 {
@@ -18,7 +20,9 @@ class AncientScope implements Scope
      */
     public function apply(Builder $builder, Model $model)
     {
-        $builder->where('obr', Auth::user()?Auth::user()->obr:null);
+
+            $res=Session::get('obr',null);
+        $builder->where('obr', Auth::user()?Auth::user()->obr:$res);
     }
 
 

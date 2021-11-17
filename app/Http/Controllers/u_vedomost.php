@@ -1,0 +1,37 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\nagr;
+use App\Scopes\AncientScope;
+use App\Scopes\godScope;
+use App\TipEkz;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
+
+class u_vedomost extends Controller
+{
+    public function index($grupp=null,$predmet=null){
+        $prep=Session::get('userid',-1);
+        $god=Session::get('god',-1);
+        $res=null;
+        $predm=null;
+        $stud=null;
+
+        $predmet=DB::table('nagr')
+                 ->join('grupp','grupp.id','=','nagr.grupp')
+                ->join('predmet','predmet.id','=','nagr.predmet')
+                ->select('grupp.nazv as gnazv','predmet.nazv','nagr.semestr','nagr.id')
+                ->where('nagr.prepod',$prep)
+            ->where('nagr.god',$god)
+            ->get();
+
+
+
+$tip_ekz=TipEkz::all();
+        return  view('front/ved',compact( 'predmet','tip_ekz'));
+    }
+
+}

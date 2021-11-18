@@ -56,7 +56,7 @@
 
                                         <div class="card-body">
                                             <label>Группа - предмет</label>
-                                            <select   name="tz" class="form-control" id="tatt">
+                                            <select   name="tz" class="form-control" id="gatt">
                                                 @foreach($predmet as $tpr)
                                                     <option value="{{$tpr->id}}">{{$tpr->gnazv}} {{$tpr->nazv}} - {{$tpr->semestr}} семестр</option>
                                                 @endforeach
@@ -69,7 +69,8 @@
                                                 </select>
 <label>Дата аттестации</label>
                                             <input type="date" class="form-control" id="datt">
-                                            <button class="btn btn-info">Выбрать</button>
+                                            <br>
+                                            <button class="btn btn-info form-control" id="vbr">Выбрать</button>
                                         </div>
                                     </div>
                                 </div>
@@ -157,7 +158,23 @@
         <script src="{{url('assets/libs/node-waves/waves.min.js')}}"></script>
 
 
+<script>
+    $('#vbr').click(function () {
 
+        $.post('{{url('vedapi')}}', {
+           'md':26,
+            'gatt': $('#gatt').val(),
+            'tatt': $('#tatt').val(),
+            'datt': $('#datt').val(),
+            '_token': '{{ csrf_token() }}'
+        }, function (data) {
+
+
+
+        });
+    });
+
+</script>
 
 
 

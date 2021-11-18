@@ -13,6 +13,7 @@ use App\Student;
 use App\StudentSved;
 use App\TipPred;
 use App\TypDann;
+use App\Vedomheader;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Support\Facades\Auth;
@@ -279,5 +280,6 @@ class api extends Controller
             $res->delete();
             return asset ('storage').'/'.$res->img;
         }
+
     }
 }

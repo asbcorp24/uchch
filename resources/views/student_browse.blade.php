@@ -73,7 +73,8 @@
                                             <span class="sr-only">Выбор</span>
                                         </button>
                                         <ul class="dropdown-menu">
-                                            <li><a href="#" class="prnagr">Добавить предметы ко всем студентам из нагрузки</a></li>
+                                            <li><a href="#" class="prnagr">Добавить шаблоны к группе из нагрузки</a></li>
+
                                             <li><a href="#" class="addprk">Добавить приказ ко всем студентам группы</a></li>
                                             <li><a href="#" class="perevodgr">Перевести в другую группу</a></li>
 
@@ -118,7 +119,7 @@
 
                                             <tr data-id="{{$ngr->id}}">
 
-                                      
+
                                                 <td>{{$ngr->fam}}</td>
                                                 <td>{{$ngr->name}}</td>
                                                 <td>{{$ngr->otch}}</td>
@@ -503,7 +504,7 @@ $('#pprikaz').append('<option value="'+item.id+'">'+item.data_pr+' '+item.n.name
             });
             $('#savengr_add').click(function () {
                 $.post('{{url('admin/api')}}', {
-                    'md': 13,
+                    'md': 26,
                     'sem': $('#pr_sem').val(),
                     'grp': $('#pr_nagr').val(),
                     'ingrp':{{\Illuminate\Support\Facades\Request::input('pr')}},

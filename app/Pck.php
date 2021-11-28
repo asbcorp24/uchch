@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Session;
 
 class Pck extends Model
 {
-    protected $table = 'Pck';
+    protected $table = 'pck';
     use SoftDeletes;
 
     protected $dates = ['deleted_at'];

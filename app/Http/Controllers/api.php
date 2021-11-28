@@ -7,6 +7,7 @@ use App\GruppUchzav;
 use App\nagr;
 use App\Phistory;
 use App\Portfolio;
+use App\Shablon;
 use App\Sprikaz;
 use App\Studball;
 use App\Student;
@@ -280,6 +281,25 @@ class api extends Controller
             $res->delete();
             return asset ('storage').'/'.$res->img;
         }
+        if ($md == 26) {
+            $res = nagr::where('grupp', $req->grp)->where('semestr', $req->sem)->get();
+            $stud = Student::where('grupp', $req->ingrp)->get();
+            foreach ($stud as $item) {
+                foreach ($res as $rs) {
+                    $stdb = Shablon::where('grupp_id',$req->grp)->where('predmet_id', $rs->predmet)->where('semestr', $rs->semestr)->first();
+                    if ($stdb == null) {
 
+                        $tmp = new Shablon();
+                      $tmp->grupp_id=$req->grp;
+                        $tmp->predmet_id = $rs->predmet;
+                        $tmp->prepod = $rs->prepod;
+                        $tmp->semestr = $rs->semestr;
+                        $tmp->save();
+                    }
+                }
+
+            }
+            return $res;
+        }
     }
 }

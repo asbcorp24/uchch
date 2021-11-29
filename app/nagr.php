@@ -13,7 +13,7 @@ class nagr extends Model
 {
     protected $table = 'nagr';
 
-
+    public $additional_attributes = ['full_name'];
 
 
     public static function boot()
@@ -30,6 +30,10 @@ class nagr extends Model
     public function predmets()
     {
         return $this->belongsTo('App\Predmet','predmet');
+    }
+    public function getFullNameAttribute()
+    {
+        return "{$this->predmets->nazv}- {$this->prepods->fam}- {$this->prepods->name}- {$this->prepods->otch}";
     }
     public function prepods()
     {

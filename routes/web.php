@@ -23,6 +23,7 @@ Route::get('uspev/{grupp?}/{predmet?}','u_uspev@index');
 Route::get('vedomost_add/{grupp?}/{predmet?}','u_vedomost@index');
 Route::post('vedapi','u_vedomost@api');
 
+
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
     Route::get('setgod','setgod@index');//->middleware('userin');;
@@ -38,5 +39,5 @@ Route::group(['prefix' => 'admin'], function () {
     Route::post('add_predmet','addngr@add_predmet');//->middleware('userin');;
     Route::post('addstudent','addst@addstudent');//->middleware('userin');;
     Route::post('api','api@index');//->middleware('userin');;
-
+    Route::get('shablony/{grupp?}','shabon_edit@index');
 });

@@ -242,6 +242,7 @@
                             <select id="pr_nagr" class="form-control">
 
                             </select>
+
                         </div>
                     </div>
                     <div class="row">
@@ -505,6 +506,7 @@ $('#pprikaz').append('<option value="'+item.id+'">'+item.data_pr+' '+item.n.name
             $('#savengr_add').click(function () {
                 $.post('{{url('admin/api')}}', {
                     'md': 26,
+                    'dgr':'{{$defgr!=null?$defgr->id:''}}',
                     'sem': $('#pr_sem').val(),
                     'grp': $('#pr_nagr').val(),
                     'ingrp':{{\Illuminate\Support\Facades\Request::input('pr')}},

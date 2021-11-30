@@ -27,16 +27,12 @@
                 <input type="checkbox" @if ($showSoftDeleted) checked @endif id="show_soft_deletes" data-toggle="toggle" data-on="{{ __('voyager::bread.soft_deletes_off') }}" data-off="{{ __('voyager::bread.soft_deletes_on') }}">
             @endif
         @endcan
-
         @foreach($actions as $action)
             @if (method_exists($action, 'massAction'))
                 @include('voyager::bread.partials.actions', ['action' => $action, 'data' => null])
             @endif
         @endforeach
         @include('voyager::multilingual.language-selector')
-        <a href="#" class="btn btn-warning" id="mass">
-            <i class="voyager-plus"></i> <span>Массовый ввод</span>
-        </a>
     </div>
 @stop
 
@@ -260,7 +256,7 @@
                                                     @include('voyager::bread.partials.actions', ['action' => $action])
                                                 @endif
                                             @endforeach
-
+                                                <a href="{{url('/admin/shablony/').'/'.$data->id}}" class="btn btn-info">Шаблоны группы</a>
                                         </td>
                                     </tr>
                                     @endforeach
@@ -308,27 +304,6 @@
                         <input type="submit" class="btn btn-danger pull-right delete-confirm" value="{{ __('voyager::generic.delete_confirm') }}">
                     </form>
                     <button type="button" class="btn btn-default pull-right" data-dismiss="modal">{{ __('voyager::generic.cancel') }}</button>
-                </div>
-            </div><!-- /.modal-content -->
-        </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
-    <div class="modal modal-info fade" id="modaladdb">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title"><i class="voyager-trash"></i> Добавление групп</h4>
-                </div>
-                <div class="modal-footer">
-                    <form action="{{url('admin/add_grupp')}}" id="addb_form" method="POST">
-
-                        {{ csrf_field() }}
-                        <p> Название групп строчку</p>
-                        <textarea class="form-control" rows="10" placeholder="A-115" name="dat"></textarea>
-                        <br>
-                        <input type="submit" class="btn btn-danger pull-right" value="Добавить">
-                    </form>
-
                 </div>
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
@@ -414,13 +389,6 @@
                 }
             });
             $('.selected_ids').val(ids);
-
-
-        });
-        $('#mass').click(function (e) {
-            e.preventDefault();
-            console.log('ee');
-            $('#modaladdb').modal('show');
         });
     </script>
 @stop

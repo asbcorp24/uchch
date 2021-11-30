@@ -33,7 +33,7 @@ class nagr extends Model
     }
     public function getFullNameAttribute()
     {
-        return "{$this->predmets->nazv}- {$this->prepods->fam}- {$this->prepods->name}- {$this->prepods->otch}";
+        return "{$this->predmets->nazv}- {$this->prepods->fam}- {$this->prepods->name}- {$this->prepods->otch}-{$this->grupps->nazv}";
     }
     public function prepods()
     {

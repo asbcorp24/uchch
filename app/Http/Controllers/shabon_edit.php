@@ -30,14 +30,14 @@ class shabon_edit extends \TCG\Voyager\Http\Controllers\VoyagerBaseController
         // GET THE SLUG, ex. 'posts', 'pages', etc.
         $slug = 'shablon';//$this->getSlug($request);
 $grupp=$request->grupp;
-        if (!Session::exists('dgrp') and !isset($request->grupp))return redirect(url('admin/grupp'));vagr
+        if (!Session::exists('dgrp') and !isset($request->grupp))return redirect(url('admin/grupp'));
 if (isset($request->grupp)){ Session::put('dgrp',$grupp);}
 if (Session::exists('dgrp') and !isset($request->grupp))return redirect(url('admin/shablony/').'/'.Session::get('dgrp','-1'));
         // GET THE DataType based on the slug
         $dataType = Voyager::model('DataType')->where('slug', '=', $slug)->first();
 
         // Check permission
-        $this->authorize('browse', app($dataType->model_name));
+        //$this->authorize('browse', app($dataType->model_name));
 
         $getter = $dataType->server_side ? 'paginate' : 'get';
 

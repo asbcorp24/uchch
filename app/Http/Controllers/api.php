@@ -283,15 +283,13 @@ class api extends Controller
         }
         if ($md == 26) {
             $res = nagr::where('grupp', $req->grp)->where('semestr', $req->sem)->get();
-            $stud = Student::where('grupp', $req->ingrp)->get();
-            foreach ($stud as $item) {
+          {
                 foreach ($res as $rs) {
                     $stdb = Shablon::where('grupp_id',$req->ingrp)->where('predmet_id', $rs->predmet)->where('semestr', $rs->semestr)->first();
                     if ($stdb == null) {
-
                         $tmp = new Shablon();
                       $tmp->grupp_id=$req->ingrp;
-                        $tmp->predmet_id = $rs->predmet;
+                        $tmp->predmet_id = $rs->id;
                         $tmp->prepod = $rs->prepod;
                         $tmp->semestr = $rs->semestr;
                         $tmp->save();

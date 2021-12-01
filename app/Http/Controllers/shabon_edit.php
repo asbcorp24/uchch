@@ -127,7 +127,7 @@ $isModelTranslatable=false;
             'defaultSearchKey',
             'usesSoftDeletes',
             'showSoftDeleted',
-            'showCheckboxColumn'
+            'showCheckboxColumn','grupp'
         ));
     }
 

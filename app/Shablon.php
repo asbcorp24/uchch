@@ -10,6 +10,10 @@ use Illuminate\Support\Facades\Auth;
 class Shablon extends Model
 {
     protected $table = 'shablon';
+    public function nagruz()
+    {
+        return $this->belongsTo('App\nagr','predmet_id');
+    }
     public static function boot()
     {
         parent::boot();

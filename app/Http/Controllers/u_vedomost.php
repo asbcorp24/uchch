@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\nagr;
+use App\Prepod;
 use App\Scopes\AncientScope;
 use App\Scopes\godScope;
+use App\Shablon;
 use App\TipEkz;
 use App\Vedomheader;
 use Illuminate\Http\Request;
@@ -21,41 +23,47 @@ class u_vedomost extends Controller
         $predm=null;
         $stud=null;
 
-        $predmet=DB::table('nagr')
-                 ->join('grupp','grupp.id','=','nagr.grupp')
-                ->join('predmet','predmet.id','=','nagr.predmet')
-                ->select('grupp.nazv as gnazv','predmet.nazv','nagr.semestr','nagr.id')
-                ->where('nagr.prepod',$prep)
-            ->where('nagr.god',$god)
+
+        $predmet=DB::table('shablon')
+            ->join('nagr','shablon.predmet_id','nagr.id')
+            ->join('grupp','grupp.id','=','nagr.grupp')
+            ->join('predmet','predmet.id','=','nagr.predmet')
+            ->select('grupp.nazv as gnazv','predmet.nazv','nagr.semestr','shablon.id')
+            ->where('shablon.prepod',$prep)
             ->get();
 
 
+$obr=Prepod::withoutGlobalScope(AncientScope::class)->find($prep)->obr;
+$tip_ekz=TipEkz::withoutGlobalScope(AncientScope::class)->where('obr',$obr)->get();
 
-$tip_ekz=TipEkz::all();
         return  view('front/ved',compact( 'predmet','tip_ekz'));
     }
 
     public function api(Request $req){
         $md=$req->md;
 if ($md == 26) {
-$gr=Vedomheader::where('nagr_id',$req->gatt)->get()->first();
-if($gr==null){$gr=new Vedomheader();$gr->nagr_id=$req->gatt;}
-    $god=Session::get('god',-1);
-$gr->dat=$req->datt;
-$gr->t_att=$req->tatt;
-$gr->save();
-    $predmet=DB::table('nagr')
-        ->join('student','nagr.grupp','=','student.grupp')
+$gr=Shablon::find($req->gatt);
 
+$gr->dat_ekz=$req->datt;
+$gr->tip_att=$req->tatt;
+
+$gr->save();
+$god=Session::get('god',-1);
+
+    $predmet=DB::table('shablon')
+        ->join('nagr','shablon.predmet_id','nagr.id')
+        ->join('student','shablon.grupp_id','=','student.grupp')
+        ->join('predmet','predmet.id','=','nagr.predmet')
         ->select( 'student.fam',
             'student.name',
             'student.otch',DB::raw("'0' as ball"),
 
-  'student.id AS studid',
-  'nagr.id as predmet_id')
-        ->where('nagr.id',$req->gatt)
-        ->where('nagr.god',$god)
+            'student.id AS studid',
+            'nagr.id as predmet_id')
+        ->where('shablon.id',$req->gatt)
         ->get();
+
+
 
 return [$predmet,$god,$req->gatt];
 }

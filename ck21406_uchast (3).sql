@@ -1,32 +1,6 @@
--- phpMyAdmin SQL Dump
--- version 5.1.1
--- https://www.phpmyadmin.net/
---
--- Хост: localhost
--- Время создания: Ноя 30 2021 г., 11:16
--- Версия сервера: 5.6.44-86.0
--- Версия PHP: 7.1.33
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
 
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
 
---
--- База данных: `ck21406_uchast`
---
-
--- --------------------------------------------------------
-
---
--- Структура таблицы `data_rows`
---
-
-DROP TABLE IF EXISTS `data_rows`;
 CREATE TABLE IF NOT EXISTS `data_rows` (
   `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `data_type_id` int(10) UNSIGNED NOT NULL,
@@ -43,11 +17,7 @@ CREATE TABLE IF NOT EXISTS `data_rows` (
   `order` int(11) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`),
   KEY `data_rows_data_type_id_foreign` (`data_type_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=182 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Дамп данных таблицы `data_rows`
---
+) ENGINE=InnoDB AUTO_INCREMENT=183 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO `data_rows` (`id`, `data_type_id`, `field`, `type`, `display_name`, `required`, `browse`, `read`, `edit`, `add`, `delete`, `details`, `order`) VALUES
 (1, 1, 'id', 'number', 'ID', 1, 0, 0, 0, 0, 0, '{}', 1),
@@ -215,24 +185,17 @@ INSERT INTO `data_rows` (`id`, `data_type_id`, `field`, `type`, `display_name`, 
 (168, 21, 'obr', 'text', 'Obr', 0, 0, 0, 0, 0, 0, '{}', 6),
 (169, 14, 'uchgr', 'select_dropdown', 'Учебная группа', 0, 1, 1, 1, 1, 1, '{\"default\":\"1\",\"options\":{\"1\":\"\\u0423\\u0447\\u0435\\u0431\\u043d\\u0430\\u044f \\u0433\\u0440\\u0443\\u043f\\u043f\\u0430\",\"2\":\"\\u041d\\u0435\\u0443\\u0447\\u0435\\u0431\\u043d\\u0430\\u044f \\u0433\\u0440\\u0443\\u043f\\u043f\\u0430\"}}', 10),
 (170, 22, 'id', 'text', 'Id', 1, 0, 0, 0, 0, 0, '{}', 1),
-(171, 22, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 1, 0, 1, '{}', 2),
+(171, 22, 'created_at', 'timestamp', 'Created At', 0, 0, 0, 0, 0, 0, '{}', 2),
 (172, 22, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 3),
-(173, 22, 'predmet_id', 'text', 'Predmet Id', 0, 1, 1, 1, 1, 1, '{}', 4),
-(174, 22, 'grupp_id', 'text', 'Grupp Id', 0, 1, 1, 1, 1, 1, '{}', 5),
-(175, 22, 'semestr', 'text', 'Semestr', 0, 1, 1, 1, 1, 1, '{\"step\":1,\"min\":0,\"max\":10,\"default\":1}', 6),
-(176, 22, 'predmet_nazv', 'text', 'Predmet Nazv', 0, 1, 1, 1, 1, 1, '{}', 7),
-(177, 22, 'prepod', 'text', 'Prepod', 0, 1, 1, 1, 1, 1, '{}', 8),
-(178, 22, 'obr', 'text', 'Obr', 0, 1, 1, 1, 1, 1, '{}', 9),
-(179, 22, 'god', 'text', 'God', 0, 1, 1, 1, 1, 1, '{}', 10),
-(181, 22, 'shablon_belongsto_nagr_relationship', 'relationship', 'nagr', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\nagr\",\"table\":\"nagr\",\"type\":\"belongsTo\",\"column\":\"predmet_id\",\"key\":\"id\",\"label\":\"display_name\",\"pivot_table\":\"data_rows\",\"pivot\":\"0\",\"taggable\":null}', 11);
+(173, 22, 'predmet_id', 'text', 'Predmet Id', 0, 1, 1, 1, 1, 1, '{}', 5),
+(174, 22, 'grupp_id', 'text', 'Grupp Id', 0, 0, 0, 0, 0, 0, '{}', 6),
+(175, 22, 'semestr', 'text', 'Семестр', 0, 1, 1, 1, 1, 1, '{\"step\":1,\"min\":0,\"max\":10,\"default\":1}', 7),
+(176, 22, 'predmet_nazv', 'text', 'Predmet Nazv', 0, 0, 0, 0, 0, 0, '{}', 8),
+(177, 22, 'prepod', 'text', 'Prepod', 0, 0, 0, 0, 0, 0, '{}', 9),
+(178, 22, 'obr', 'text', 'Obr', 0, 0, 0, 0, 0, 0, '{}', 10),
+(179, 22, 'god', 'text', 'God', 0, 0, 0, 0, 0, 0, '{}', 11),
+(182, 22, 'shablon_belongsto_nagr_relationship', 'relationship', 'nagr', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\nagr\",\"table\":\"nagr\",\"type\":\"belongsTo\",\"column\":\"predmet_id\",\"key\":\"id\",\"label\":\"full_name\",\"pivot_table\":\"data_rows\",\"pivot\":\"0\",\"taggable\":\"0\"}', 4);
 
--- --------------------------------------------------------
-
---
--- Структура таблицы `data_types`
---
-
-DROP TABLE IF EXISTS `data_types`;
 CREATE TABLE IF NOT EXISTS `data_types` (
   `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `name` varchar(155) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -254,10 +217,6 @@ CREATE TABLE IF NOT EXISTS `data_types` (
   UNIQUE KEY `data_types_slug_unique` (`slug`)
 ) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Дамп данных таблицы `data_types`
---
-
 INSERT INTO `data_types` (`id`, `name`, `slug`, `display_name_singular`, `display_name_plural`, `icon`, `model_name`, `policy_name`, `controller`, `description`, `generate_permissions`, `server_side`, `details`, `created_at`, `updated_at`) VALUES
 (1, 'users', 'users', 'User', 'Users', 'voyager-person', 'TCG\\Voyager\\Models\\User', 'TCG\\Voyager\\Policies\\UserPolicy', 'TCG\\Voyager\\Http\\Controllers\\VoyagerUserController', NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"desc\",\"default_search_key\":null,\"scope\":null}', '2021-09-25 15:46:30', '2021-09-26 14:14:46'),
 (2, 'menus', 'menus', 'Menu', 'Menus', 'voyager-list', 'TCG\\Voyager\\Models\\Menu', NULL, '', '', 1, 0, NULL, '2021-09-25 15:46:30', '2021-09-25 15:46:30'),
@@ -278,15 +237,8 @@ INSERT INTO `data_types` (`id`, `name`, `slug`, `display_name_singular`, `displa
 (19, 'student_sved', 'student-sved', 'Student Sved', 'Student Sveds', NULL, 'App\\StudentSved', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2021-10-05 15:13:25', '2021-10-06 15:54:07'),
 (20, 'typ_ball', 'typ-ball', 'Виды успеваемости', 'Виды успеваемости', 'voyager-company', 'App\\TypBall', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null}', '2021-10-09 15:26:01', '2021-10-09 15:26:01'),
 (21, 'typpricaza', 'typpricaza', 'Типы приказов', 'Типы приказов', 'voyager-backpack', 'App\\Typpricaza', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null}', '2021-10-14 15:36:02', '2021-10-14 15:36:02'),
-(22, 'shablon', 'shablon', 'Шаблоны предметов к группе', 'Шаблоны предметов к группе', NULL, 'App\\Shablon', NULL, '\\App\\Http\\Controllers\\shabon_edit', NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2021-11-29 16:32:23', '2021-11-29 16:35:44');
+(22, 'shablon', 'shablon', 'Шаблоны предметов к группе', 'Шаблоны предметов к группе', NULL, 'App\\Shablon', NULL, '\\App\\Http\\Controllers\\shabon_edit', NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2021-11-29 16:32:23', '2021-11-30 06:16:33');
 
--- --------------------------------------------------------
-
---
--- Структура таблицы `failed_jobs`
---
-
-DROP TABLE IF EXISTS `failed_jobs`;
 CREATE TABLE IF NOT EXISTS `failed_jobs` (
   `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
   `connection` text COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -297,13 +249,6 @@ CREATE TABLE IF NOT EXISTS `failed_jobs` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- --------------------------------------------------------
-
---
--- Структура таблицы `god`
---
-
-DROP TABLE IF EXISTS `god`;
 CREATE TABLE IF NOT EXISTS `god` (
   `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `deleted_at` timestamp NULL DEFAULT NULL,
@@ -314,22 +259,11 @@ CREATE TABLE IF NOT EXISTS `god` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Дамп данных таблицы `god`
---
-
 INSERT INTO `god` (`id`, `deleted_at`, `created_at`, `updated_at`, `nazv`, `obr`) VALUES
 (3, NULL, '2021-09-27 14:07:39', '2021-09-27 14:07:39', 2021, 1),
 (4, NULL, '2021-09-30 07:59:35', '2021-09-30 07:59:35', 2022, 1),
 (5, NULL, '2021-10-12 02:35:10', '2021-10-12 02:35:10', 2021, 2);
 
--- --------------------------------------------------------
-
---
--- Структура таблицы `grupp`
---
-
-DROP TABLE IF EXISTS `grupp`;
 CREATE TABLE IF NOT EXISTS `grupp` (
   `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -343,10 +277,6 @@ CREATE TABLE IF NOT EXISTS `grupp` (
   `obr` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=158 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Дамп данных таблицы `grupp`
---
 
 INSERT INTO `grupp` (`id`, `created_at`, `updated_at`, `deleted_at`, `nazv`, `col`, `god`, `spec`, `kommerc`, `obr`) VALUES
 (1, '2021-09-26 16:08:31', '2021-09-26 16:08:31', NULL, '105', 23, 1, 1, 0, 1),
@@ -406,13 +336,6 @@ INSERT INTO `grupp` (`id`, `created_at`, `updated_at`, `deleted_at`, `nazv`, `co
 (156, '2021-10-12 06:15:55', '2021-10-12 06:15:55', NULL, 'ПМ 513', 18, 5, 9, 0, 2),
 (157, '2021-10-12 06:16:37', '2021-10-12 06:16:37', NULL, 'ПМ 500', 14, 5, 9, 0, 2);
 
--- --------------------------------------------------------
-
---
--- Структура таблицы `grupp_uchzav`
---
-
-DROP TABLE IF EXISTS `grupp_uchzav`;
 CREATE TABLE IF NOT EXISTS `grupp_uchzav` (
   `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -426,10 +349,6 @@ CREATE TABLE IF NOT EXISTS `grupp_uchzav` (
   `uchgr` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=82 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Дамп данных таблицы `grupp_uchzav`
---
 
 INSERT INTO `grupp_uchzav` (`id`, `created_at`, `updated_at`, `deleted_at`, `name`, `kurs`, `kl_ruk`, `obr`, `spec`, `uchgr`) VALUES
 (1, '2021-10-05 10:18:47', '2021-10-17 17:01:56', NULL, '105', 2, 4, 1, 1, 1),
@@ -514,13 +433,6 @@ INSERT INTO `grupp_uchzav` (`id`, `created_at`, `updated_at`, `deleted_at`, `nam
 (80, '2021-10-19 04:41:37', '2021-10-19 04:41:37', NULL, '412', 4, NULL, 1, 2, 1),
 (81, '2021-10-27 02:18:50', '2021-10-27 02:18:50', NULL, '117', 1, NULL, 1, 1, 1);
 
--- --------------------------------------------------------
-
---
--- Структура таблицы `kategory`
---
-
-DROP TABLE IF EXISTS `kategory`;
 CREATE TABLE IF NOT EXISTS `kategory` (
   `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `deleted_at` timestamp NULL DEFAULT NULL,
@@ -531,10 +443,6 @@ CREATE TABLE IF NOT EXISTS `kategory` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Дамп данных таблицы `kategory`
---
-
 INSERT INTO `kategory` (`id`, `deleted_at`, `created_at`, `updated_at`, `name`, `obr`) VALUES
 (1, NULL, '2021-10-05 14:28:27', '2021-10-21 04:32:03', 'Иные сведения', 1),
 (2, NULL, '2021-10-05 14:50:56', '2021-10-05 14:50:56', 'Общие сведения', 1),
@@ -542,13 +450,6 @@ INSERT INTO `kategory` (`id`, `deleted_at`, `created_at`, `updated_at`, `name`, 
 (4, NULL, '2021-10-19 06:37:07', '2021-10-19 06:37:07', 'Литерное дело', 1),
 (5, '2021-10-21 05:53:52', '2021-10-21 05:52:29', '2021-10-21 05:53:52', 'ФИО опекуна', 1);
 
--- --------------------------------------------------------
-
---
--- Структура таблицы `menus`
---
-
-DROP TABLE IF EXISTS `menus`;
 CREATE TABLE IF NOT EXISTS `menus` (
   `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `name` varchar(155) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -558,20 +459,9 @@ CREATE TABLE IF NOT EXISTS `menus` (
   UNIQUE KEY `menus_name_unique` (`name`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Дамп данных таблицы `menus`
---
-
 INSERT INTO `menus` (`id`, `name`, `created_at`, `updated_at`) VALUES
 (1, 'admin', '2021-09-25 15:46:30', '2021-09-25 15:46:30');
 
--- --------------------------------------------------------
-
---
--- Структура таблицы `menu_items`
---
-
-DROP TABLE IF EXISTS `menu_items`;
 CREATE TABLE IF NOT EXISTS `menu_items` (
   `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `menu_id` int(10) UNSIGNED DEFAULT NULL,
@@ -589,10 +479,6 @@ CREATE TABLE IF NOT EXISTS `menu_items` (
   PRIMARY KEY (`id`),
   KEY `menu_items_menu_id_foreign` (`menu_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Дамп данных таблицы `menu_items`
---
 
 INSERT INTO `menu_items` (`id`, `menu_id`, `title`, `url`, `target`, `icon_class`, `color`, `parent_id`, `order`, `created_at`, `updated_at`, `route`, `parameters`) VALUES
 (1, 1, 'Dashboard', '', '_self', 'voyager-boat', NULL, NULL, 1, '2021-09-25 15:46:30', '2021-09-25 15:46:30', 'voyager.dashboard', NULL),
@@ -624,23 +510,12 @@ INSERT INTO `menu_items` (`id`, `menu_id`, `title`, `url`, `target`, `icon_class
 (28, 1, 'Типы приказов', '', '_self', 'voyager-backpack', NULL, 24, 1, '2021-10-14 15:36:02', '2021-10-14 15:36:39', 'voyager.typpricaza.index', NULL),
 (29, 1, 'Шаблоны предметов к группе', '', '_self', NULL, NULL, NULL, 12, '2021-11-29 16:32:23', '2021-11-29 16:32:23', 'voyager.shablon.index', NULL);
 
--- --------------------------------------------------------
-
---
--- Структура таблицы `migrations`
---
-
-DROP TABLE IF EXISTS `migrations`;
 CREATE TABLE IF NOT EXISTS `migrations` (
   `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `migration` varchar(155) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Дамп данных таблицы `migrations`
---
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (24, '2014_10_12_000000_create_users_table', 1),
@@ -667,13 +542,6 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (45, '2018_03_16_000000_make_settings_value_nullable', 1),
 (46, '2019_08_19_000000_create_failed_jobs_table', 1);
 
--- --------------------------------------------------------
-
---
--- Структура таблицы `nagr`
---
-
-DROP TABLE IF EXISTS `nagr`;
 CREATE TABLE IF NOT EXISTS `nagr` (
   `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -702,10 +570,6 @@ CREATE TABLE IF NOT EXISTS `nagr` (
   `inoe` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=564 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Дамп данных таблицы `nagr`
---
 
 INSERT INTO `nagr` (`id`, `created_at`, `updated_at`, `god`, `obr`, `kurs`, `semestr`, `predmet`, `prepod`, `pck`, `pogos`, `srs`, `leck`, `lab`, `pract`, `podgr`, `ekz`, `zach`, `ssuz_ekz`, `ssuz_zach`, `KP`, `KR`, `typ_pr`, `grupp`, `inoe`) VALUES
 (14, '2021-09-29 17:22:36', '2021-09-30 07:41:35', 3, 1, 1, 2, 2, 3, 1, 3, 0, 4, 0, 5, 1, NULL, 0, NULL, NULL, 2, NULL, 6, 6, NULL),
@@ -1258,13 +1122,6 @@ INSERT INTO `nagr` (`id`, `created_at`, `updated_at`, `god`, `obr`, `kurs`, `sem
 (562, '2021-10-18 06:55:28', '2021-10-18 06:55:28', 5, 2, 3, 5, 210, 229, 3, 108, 0, 0, 0, 108, 1, NULL, 0, NULL, NULL, 0, NULL, 4, 157, NULL),
 (563, '2021-10-18 06:56:29', '2021-10-18 06:56:29', 5, 2, 3, 5, 236, 223, 3, 180, 0, 0, 0, 90, 1, NULL, 0, NULL, NULL, 0, NULL, 5, 157, NULL);
 
--- --------------------------------------------------------
-
---
--- Структура таблицы `obr_uch`
---
-
-DROP TABLE IF EXISTS `obr_uch`;
 CREATE TABLE IF NOT EXISTS `obr_uch` (
   `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `deleted_at` timestamp NULL DEFAULT NULL,
@@ -1274,23 +1131,12 @@ CREATE TABLE IF NOT EXISTS `obr_uch` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Дамп данных таблицы `obr_uch`
---
-
 INSERT INTO `obr_uch` (`id`, `deleted_at`, `name`, `created_at`, `updated_at`) VALUES
 (1, NULL, 'ГАОУ СПО ЗМУ', '2021-09-26 14:27:20', '2021-09-26 14:27:20'),
 (2, NULL, 'ГАПОУ «ККСАиГХ»', '2021-09-29 16:35:19', '2021-10-12 02:31:23'),
 (5, '2021-10-01 17:02:36', 'проба', '2021-10-01 17:00:13', '2021-10-01 17:02:36'),
 (6, NULL, 'Полный', '2021-10-01 17:03:24', '2021-10-01 17:03:24');
 
--- --------------------------------------------------------
-
---
--- Структура таблицы `otchets`
---
-
-DROP TABLE IF EXISTS `otchets`;
 CREATE TABLE IF NOT EXISTS `otchets` (
   `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -1303,13 +1149,6 @@ CREATE TABLE IF NOT EXISTS `otchets` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- --------------------------------------------------------
-
---
--- Структура таблицы `otchets_perem`
---
-
-DROP TABLE IF EXISTS `otchets_perem`;
 CREATE TABLE IF NOT EXISTS `otchets_perem` (
   `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -1322,13 +1161,6 @@ CREATE TABLE IF NOT EXISTS `otchets_perem` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- --------------------------------------------------------
-
---
--- Структура таблицы `password_resets`
---
-
-DROP TABLE IF EXISTS `password_resets`;
 CREATE TABLE IF NOT EXISTS `password_resets` (
   `email` varchar(155) COLLATE utf8mb4_unicode_ci NOT NULL,
   `token` varchar(155) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -1336,13 +1168,6 @@ CREATE TABLE IF NOT EXISTS `password_resets` (
   KEY `password_resets_email_index` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- --------------------------------------------------------
-
---
--- Структура таблицы `pck`
---
-
-DROP TABLE IF EXISTS `pck`;
 CREATE TABLE IF NOT EXISTS `pck` (
   `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `deleted_at` timestamp NULL DEFAULT NULL,
@@ -1353,23 +1178,12 @@ CREATE TABLE IF NOT EXISTS `pck` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Дамп данных таблицы `pck`
---
-
 INSERT INTO `pck` (`id`, `deleted_at`, `created_at`, `updated_at`, `name`, `obr`) VALUES
 (1, NULL, '2021-09-26 16:20:36', '2021-09-26 16:20:36', 'Фармация', 1),
 (2, NULL, '2021-10-12 03:01:09', '2021-10-13 11:30:54', 'Методическая комиссия специальностей социально-экономического профиля', 2),
 (3, NULL, '2021-10-13 10:05:07', '2021-10-13 11:30:33', 'Методическая комиссия специальностей и профессий строительного профиля и ЖКХ', 2),
 (4, NULL, '2021-10-13 10:05:57', '2021-10-13 11:30:01', 'Методическая комиссия дисциплин общеобразовательного цикла', 2);
 
--- --------------------------------------------------------
-
---
--- Структура таблицы `permissions`
---
-
-DROP TABLE IF EXISTS `permissions`;
 CREATE TABLE IF NOT EXISTS `permissions` (
   `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
   `key` varchar(155) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -1379,10 +1193,6 @@ CREATE TABLE IF NOT EXISTS `permissions` (
   PRIMARY KEY (`id`),
   KEY `permissions_key_index` (`key`)
 ) ENGINE=InnoDB AUTO_INCREMENT=111 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Дамп данных таблицы `permissions`
---
 
 INSERT INTO `permissions` (`id`, `key`, `table_name`, `created_at`, `updated_at`) VALUES
 (1, 'browse_admin', NULL, '2021-09-25 15:46:31', '2021-09-25 15:46:31'),
@@ -1496,13 +1306,6 @@ INSERT INTO `permissions` (`id`, `key`, `table_name`, `created_at`, `updated_at`
 (109, 'add_shablon', 'shablon', '2021-11-29 16:32:23', '2021-11-29 16:32:23'),
 (110, 'delete_shablon', 'shablon', '2021-11-29 16:32:23', '2021-11-29 16:32:23');
 
--- --------------------------------------------------------
-
---
--- Структура таблицы `permission_role`
---
-
-DROP TABLE IF EXISTS `permission_role`;
 CREATE TABLE IF NOT EXISTS `permission_role` (
   `permission_id` bigint(20) UNSIGNED NOT NULL,
   `role_id` bigint(20) UNSIGNED NOT NULL,
@@ -1510,10 +1313,6 @@ CREATE TABLE IF NOT EXISTS `permission_role` (
   KEY `permission_role_permission_id_index` (`permission_id`),
   KEY `permission_role_role_id_index` (`role_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Дамп данных таблицы `permission_role`
---
 
 INSERT INTO `permission_role` (`permission_id`, `role_id`) VALUES
 (1, 1),
@@ -1706,13 +1505,6 @@ INSERT INTO `permission_role` (`permission_id`, `role_id`) VALUES
 (109, 1),
 (110, 1);
 
--- --------------------------------------------------------
-
---
--- Структура таблицы `phistory`
---
-
-DROP TABLE IF EXISTS `phistory`;
 CREATE TABLE IF NOT EXISTS `phistory` (
   `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -1726,20 +1518,9 @@ CREATE TABLE IF NOT EXISTS `phistory` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Дамп данных таблицы `phistory`
---
-
 INSERT INTO `phistory` (`id`, `created_at`, `updated_at`, `oldg`, `newgr`, `prikaz_id`, `prikaz_data`, `p_comment`, `obr`) VALUES
 (1, '2021-10-16 17:43:03', '2021-10-16 17:43:03', '105', '106', 1, NULL, NULL, 1);
 
--- --------------------------------------------------------
-
---
--- Структура таблицы `portfolio`
---
-
-DROP TABLE IF EXISTS `portfolio`;
 CREATE TABLE IF NOT EXISTS `portfolio` (
   `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -1754,20 +1535,9 @@ CREATE TABLE IF NOT EXISTS `portfolio` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Дамп данных таблицы `portfolio`
---
-
 INSERT INTO `portfolio` (`id`, `created_at`, `updated_at`, `obr`, `student_id`, `img`, `dat`, `name`, `comment`, `podrazdel`) VALUES
 (11, '2021-10-21 15:47:31', '2021-10-21 15:47:31', 1, 202, '1/202/WJwPIIZN6nGtrNBhxOvsEaErciZvPw9PDhOwahyS.jpg.webp', '2021-10-09', 'тип', '12', NULL);
 
--- --------------------------------------------------------
-
---
--- Структура таблицы `predmet`
---
-
-DROP TABLE IF EXISTS `predmet`;
 CREATE TABLE IF NOT EXISTS `predmet` (
   `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -1778,10 +1548,6 @@ CREATE TABLE IF NOT EXISTS `predmet` (
   `obr` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=389 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Дамп данных таблицы `predmet`
---
 
 INSERT INTO `predmet` (`id`, `created_at`, `updated_at`, `deleted_at`, `nazv`, `nazv_full`, `obr`) VALUES
 (1, '2021-09-26 15:02:36', '2021-10-01 14:21:42', '2021-10-01 14:21:42', 'Русский язык', 'Русский язык', 1),
@@ -2174,13 +1940,6 @@ INSERT INTO `predmet` (`id`, `created_at`, `updated_at`, `deleted_at`, `nazv`, `
 (387, '2021-10-13 09:52:28', '2021-10-13 09:52:28', NULL, 'МДК 03.01 Организация и контроль диспетчерского и аварийного обслуживания объектов ЖКХ', 'МДК 03.01 Организация и контроль диспетчерского и аварийного обслуживания объектов ЖКХ', 2),
 (388, '2021-10-18 03:39:52', '2021-10-18 03:39:52', NULL, 'Экзамен по модулю ПМ.04', 'Экзамен по модулю ПМ.04', 2);
 
--- --------------------------------------------------------
-
---
--- Структура таблицы `prepod`
---
-
-DROP TABLE IF EXISTS `prepod`;
 CREATE TABLE IF NOT EXISTS `prepod` (
   `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -2195,10 +1954,6 @@ CREATE TABLE IF NOT EXISTS `prepod` (
   `password` char(150) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=248 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Дамп данных таблицы `prepod`
---
 
 INSERT INTO `prepod` (`id`, `created_at`, `updated_at`, `deleted_at`, `fam`, `name`, `otch`, `sht`, `kat`, `obr`, `password`) VALUES
 (1, '2021-09-26 14:42:42', '2021-09-26 14:42:42', NULL, 'Иванов', 'Иван', 'Иванович', 1, 12, 1, NULL),
@@ -2362,13 +2117,6 @@ INSERT INTO `prepod` (`id`, `created_at`, `updated_at`, `deleted_at`, `fam`, `na
 (246, '2021-10-14 07:21:20', '2021-10-14 07:21:20', NULL, 'Галиуллин', 'Булат', 'Ниязович', 0, NULL, 2, NULL),
 (247, '2021-10-18 05:14:55', '2021-10-18 05:14:55', NULL, 'Гимадеева', 'Нина', 'Семеновна', 0, NULL, 2, NULL);
 
--- --------------------------------------------------------
-
---
--- Структура таблицы `roles`
---
-
-DROP TABLE IF EXISTS `roles`;
 CREATE TABLE IF NOT EXISTS `roles` (
   `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
   `name` varchar(155) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -2379,21 +2127,10 @@ CREATE TABLE IF NOT EXISTS `roles` (
   UNIQUE KEY `roles_name_unique` (`name`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Дамп данных таблицы `roles`
---
-
 INSERT INTO `roles` (`id`, `name`, `display_name`, `created_at`, `updated_at`) VALUES
 (1, 'admin', 'Administrator', '2021-09-25 15:46:31', '2021-09-25 15:46:31'),
 (2, 'user', 'Normal User', '2021-09-25 15:46:31', '2021-09-25 15:46:31');
 
--- --------------------------------------------------------
-
---
--- Структура таблицы `settings`
---
-
-DROP TABLE IF EXISTS `settings`;
 CREATE TABLE IF NOT EXISTS `settings` (
   `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `key` varchar(155) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -2407,10 +2144,6 @@ CREATE TABLE IF NOT EXISTS `settings` (
   PRIMARY KEY (`id`),
   KEY `settings_key_unique` (`key`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Дамп данных таблицы `settings`
---
 
 INSERT INTO `settings` (`id`, `key`, `display_name`, `value`, `details`, `type`, `order`, `group`, `obr`) VALUES
 (1, 'site.title', 'Site Title', 'Site Title', '', 'text', 1, 'Site', 0),
@@ -2433,13 +2166,6 @@ INSERT INTO `settings` (`id`, `key`, `display_name`, `value`, `details`, `type`,
 (24, 'admin.kezam', 'Коэффициент расчёта экзамен', '0.35', NULL, 'text', 7, 'Admin', 2),
 (25, 'admin.kkp', 'Коэффициент расчёта курсовой проект', '0.35', NULL, 'text', 8, 'Admin', 2);
 
--- --------------------------------------------------------
-
---
--- Структура таблицы `shablon`
---
-
-DROP TABLE IF EXISTS `shablon`;
 CREATE TABLE IF NOT EXISTS `shablon` (
   `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -2452,11 +2178,7 @@ CREATE TABLE IF NOT EXISTS `shablon` (
   `obr` int(11) DEFAULT NULL,
   `god` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=474 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Дамп данных таблицы `shablon`
---
+) ENGINE=InnoDB AUTO_INCREMENT=507 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO `shablon` (`id`, `created_at`, `updated_at`, `predmet_id`, `grupp_id`, `semestr`, `predmet_nazv`, `prepod`, `obr`, `god`) VALUES
 (2, '2021-11-28 15:54:17', '2021-11-28 15:54:17', 194, 114, 1, NULL, 175, 2, NULL),
@@ -2930,15 +2652,41 @@ INSERT INTO `shablon` (`id`, `created_at`, `updated_at`, `predmet_id`, `grupp_id
 (470, '2021-11-29 04:30:31', '2021-11-29 04:30:31', 237, 134, 7, NULL, 220, 2, NULL),
 (471, '2021-11-29 04:30:31', '2021-11-29 04:30:31', 362, 134, 7, NULL, 210, 2, NULL),
 (472, '2021-11-29 04:30:31', '2021-11-29 04:30:31', 268, 134, 7, NULL, 210, 2, NULL),
-(473, '2021-11-29 04:30:31', '2021-11-29 04:30:31', 363, 134, 7, NULL, 215, 2, NULL);
+(473, '2021-11-29 04:30:31', '2021-11-29 04:30:31', 363, 134, 7, NULL, 215, 2, NULL),
+(474, '2021-11-30 06:21:21', '2021-11-30 06:21:21', 194, NULL, 1, NULL, 175, 2, NULL),
+(475, '2021-11-30 06:21:21', '2021-11-30 06:21:21', 197, NULL, 1, NULL, 187, 2, NULL),
+(476, '2021-11-30 06:21:21', '2021-11-30 06:21:21', 195, NULL, 1, NULL, 194, 2, NULL),
+(477, '2021-11-30 06:21:21', '2021-11-30 06:21:21', 193, NULL, 1, NULL, 200, 2, NULL),
+(478, '2021-11-30 06:21:21', '2021-11-30 06:21:21', 204, NULL, 1, NULL, 241, 2, NULL),
+(479, '2021-11-30 06:21:21', '2021-11-30 06:21:21', 201, NULL, 1, NULL, 198, 2, NULL),
+(480, '2021-11-30 06:21:21', '2021-11-30 06:21:21', 202, NULL, 1, NULL, 221, 2, NULL),
+(481, '2021-11-30 06:21:21', '2021-11-30 06:21:21', 196, NULL, 1, NULL, 232, 2, NULL),
+(482, '2021-11-30 06:21:21', '2021-11-30 06:21:21', 205, NULL, 1, NULL, 186, 2, NULL),
+(483, '2021-11-30 06:21:21', '2021-11-30 06:21:21', 206, NULL, 1, NULL, 197, 2, NULL),
+(484, '2021-11-30 06:21:21', '2021-11-30 06:21:21', 198, NULL, 1, NULL, 176, 2, NULL),
+(485, '2021-11-30 06:27:51', '2021-11-30 06:27:51', 194, 22, 1, NULL, 175, 2, NULL),
+(486, '2021-11-30 06:27:51', '2021-11-30 06:27:51', 197, 22, 1, NULL, 187, 2, NULL),
+(487, '2021-11-30 06:27:51', '2021-11-30 06:27:51', 195, 22, 1, NULL, 194, 2, NULL),
+(488, '2021-11-30 06:27:51', '2021-11-30 06:27:51', 193, 22, 1, NULL, 200, 2, NULL),
+(489, '2021-11-30 06:27:51', '2021-11-30 06:27:51', 204, 22, 1, NULL, 241, 2, NULL),
+(490, '2021-11-30 06:27:51', '2021-11-30 06:27:51', 201, 22, 1, NULL, 198, 2, NULL),
+(491, '2021-11-30 06:27:51', '2021-11-30 06:27:51', 202, 22, 1, NULL, 221, 2, NULL),
+(492, '2021-11-30 06:27:51', '2021-11-30 06:27:51', 196, 22, 1, NULL, 232, 2, NULL),
+(493, '2021-11-30 06:27:51', '2021-11-30 06:27:51', 205, 22, 1, NULL, 186, 2, NULL),
+(494, '2021-11-30 06:27:51', '2021-11-30 06:27:51', 206, 22, 1, NULL, 197, 2, NULL),
+(495, '2021-11-30 06:27:51', '2021-11-30 06:27:51', 198, 22, 1, NULL, 176, 2, NULL),
+(496, '2021-11-30 06:28:43', '2021-11-30 06:28:43', 194, 23, 1, NULL, 175, 2, NULL),
+(497, '2021-11-30 06:28:43', '2021-11-30 06:28:43', 197, 23, 1, NULL, 187, 2, NULL),
+(498, '2021-11-30 06:28:43', '2021-11-30 06:28:43', 195, 23, 1, NULL, 191, 2, NULL),
+(499, '2021-11-30 06:28:43', '2021-11-30 06:28:43', 193, 23, 1, NULL, 200, 2, NULL),
+(500, '2021-11-30 06:28:43', '2021-11-30 06:28:43', 204, 23, 1, NULL, 219, 2, NULL),
+(501, '2021-11-30 06:28:43', '2021-11-30 06:28:43', 201, 23, 1, NULL, 198, 2, NULL),
+(502, '2021-11-30 06:28:43', '2021-11-30 06:28:43', 202, 23, 1, NULL, 221, 2, NULL),
+(503, '2021-11-30 06:28:43', '2021-11-30 06:28:43', 196, 23, 1, NULL, 232, 2, NULL),
+(504, '2021-11-30 06:28:43', '2021-11-30 06:28:43', 205, 23, 1, NULL, 186, 2, NULL),
+(505, '2021-11-30 06:28:43', '2021-11-30 06:28:43', 206, 23, 1, NULL, 197, 2, NULL),
+(506, '2021-11-30 06:28:43', '2021-11-30 06:28:43', 198, 23, 1, NULL, 213, 2, NULL);
 
--- --------------------------------------------------------
-
---
--- Структура таблицы `spec`
---
-
-DROP TABLE IF EXISTS `spec`;
 CREATE TABLE IF NOT EXISTS `spec` (
   `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `deleted_at` timestamp NULL DEFAULT NULL,
@@ -2949,10 +2697,6 @@ CREATE TABLE IF NOT EXISTS `spec` (
   `obr` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Дамп данных таблицы `spec`
---
 
 INSERT INTO `spec` (`id`, `deleted_at`, `created_at`, `updated_at`, `name`, `numspec`, `obr`) VALUES
 (1, NULL, '2021-09-26 15:15:41', '2021-09-26 15:15:41', 'Сестринское дело', '31101', 1),
@@ -2970,13 +2714,6 @@ INSERT INTO `spec` (`id`, `deleted_at`, `created_at`, `updated_at`, `name`, `num
 (13, NULL, '2021-10-18 03:29:50', '2021-10-18 03:29:50', 'фармация', NULL, 1),
 (14, '2021-10-18 03:30:04', '2021-10-18 03:29:53', '2021-10-18 03:30:04', 'фармация', NULL, 1);
 
--- --------------------------------------------------------
-
---
--- Структура таблицы `sprikaz`
---
-
-DROP TABLE IF EXISTS `sprikaz`;
 CREATE TABLE IF NOT EXISTS `sprikaz` (
   `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -2990,21 +2727,10 @@ CREATE TABLE IF NOT EXISTS `sprikaz` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Дамп данных таблицы `sprikaz`
---
-
 INSERT INTO `sprikaz` (`id`, `created_at`, `updated_at`, `student_id`, `prikaz_id`, `data_pr`, `comment`, `obr`, `name`) VALUES
 (1, '2021-10-16 17:30:44', '2021-10-16 17:30:44', 2, 1, '2021-10-08', '23', 1, '12'),
 (6, '2021-10-16 17:42:05', '2021-10-16 17:42:19', 2, 1, '2021-09-30', 'loadprikaz({{$dataTypeContent->id}})', 1, '12');
 
--- --------------------------------------------------------
-
---
--- Структура таблицы `studball`
---
-
-DROP TABLE IF EXISTS `studball`;
 CREATE TABLE IF NOT EXISTS `studball` (
   `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -3017,10 +2743,6 @@ CREATE TABLE IF NOT EXISTS `studball` (
   `prepod` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=11675 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Дамп данных таблицы `studball`
---
 
 INSERT INTO `studball` (`id`, `created_at`, `updated_at`, `predmet_id`, `ball`, `stud_id`, `obr`, `sem`, `prepod`) VALUES
 (10, '2021-10-10 15:38:01', '2021-10-10 15:38:01', 191, 5, 2, 1, 1, NULL),
@@ -14530,13 +14252,6 @@ INSERT INTO `studball` (`id`, `created_at`, `updated_at`, `predmet_id`, `ball`, 
 (11673, '2021-11-01 05:58:56', '2021-11-01 05:58:56', 268, NULL, 1742, 2, 7, 210),
 (11674, '2021-11-01 05:58:56', '2021-11-01 05:58:56', 363, NULL, 1742, 2, 7, 215);
 
--- --------------------------------------------------------
-
---
--- Структура таблицы `student`
---
-
-DROP TABLE IF EXISTS `student`;
 CREATE TABLE IF NOT EXISTS `student` (
   `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `deleted_at` timestamp NULL DEFAULT NULL,
@@ -14552,10 +14267,6 @@ CREATE TABLE IF NOT EXISTS `student` (
   `pol` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1769 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Дамп данных таблицы `student`
---
 
 INSERT INTO `student` (`id`, `deleted_at`, `created_at`, `updated_at`, `fam`, `name`, `otch`, `d_r`, `passw`, `obr`, `grupp`, `pol`) VALUES
 (1, NULL, '2021-10-05 14:00:49', '2021-10-20 05:14:17', 'Агеева', 'Анастасия', 'Олеговна', '2005-08-12', '5232091453070224', 1, 2, 0),
@@ -16331,13 +16042,6 @@ INSERT INTO `student` (`id`, `deleted_at`, `created_at`, `updated_at`, `fam`, `n
 (1767, NULL, '2021-10-28 03:05:58', '2021-10-28 03:10:36', 'Черненко', 'Оксана', 'Анатольевна', '1989-06-05', '9559693364061020', 1, 81, 0),
 (1768, NULL, '2021-10-29 04:35:38', '2021-10-29 04:40:15', 'Алячина', 'Карина', 'Андреевна', '2004-12-02', '7081983309073955', 1, 12, 0);
 
--- --------------------------------------------------------
-
---
--- Структура таблицы `student_sved`
---
-
-DROP TABLE IF EXISTS `student_sved`;
 CREATE TABLE IF NOT EXISTS `student_sved` (
   `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -16349,10 +16053,6 @@ CREATE TABLE IF NOT EXISTS `student_sved` (
   `comment` text COLLATE utf8mb4_unicode_ci,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2689 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Дамп данных таблицы `student_sved`
---
 
 INSERT INTO `student_sved` (`id`, `created_at`, `updated_at`, `type_sv`, `obr`, `value`, `student_id`, `comment`) VALUES
 (47, '2021-10-09 13:00:03', '2021-10-09 13:00:03', 2, 1, '6NNZ6bOLN//7VjDa6jQadA==', 2, 'O5s3QNW4eVluOPPHo3njKQ=='),
@@ -18843,13 +18543,6 @@ INSERT INTO `student_sved` (`id`, `created_at`, `updated_at`, `type_sv`, `obr`, 
 (2687, '2021-10-29 05:07:52', '2021-10-29 05:07:52', 12, 1, '0xGkvo7AoIkpCGhvM6ZnKKAAgM6xGHDalDd5vyiDiDiKL9JIpFwyEzxPXk0uEzACzezC4afLZ781qDFNQLDLxw==', 234, 'smVrIQBCO9hIUVLNOBcD+w=='),
 (2688, '2021-10-29 05:08:13', '2021-10-29 05:08:13', 13, 1, '/sA65BA0ZqZOy1vFAxEJnfnKMqr5F8J609oPkwpp4zhxH3FZQNum8HO61l1Zt3YAWukSzJyA0D93WHAWYVjP1Q==', 234, 'smVrIQBCO9hIUVLNOBcD+w==');
 
--- --------------------------------------------------------
-
---
--- Структура таблицы `tip_pred`
---
-
-DROP TABLE IF EXISTS `tip_pred`;
 CREATE TABLE IF NOT EXISTS `tip_pred` (
   `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `deleted_at` timestamp NULL DEFAULT NULL,
@@ -18860,10 +18553,6 @@ CREATE TABLE IF NOT EXISTS `tip_pred` (
   `obr` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Дамп данных таблицы `tip_pred`
---
 
 INSERT INTO `tip_pred` (`id`, `deleted_at`, `created_at`, `updated_at`, `nazv`, `schitat`, `obr`) VALUES
 (1, NULL, NULL, NULL, 'Предмет', NULL, 2),
@@ -18897,13 +18586,6 @@ INSERT INTO `tip_pred` (`id`, `deleted_at`, `created_at`, `updated_at`, `nazv`, 
 (29, NULL, NULL, NULL, 'Учебная практика', NULL, 6),
 (30, NULL, NULL, NULL, 'Производственная практика', NULL, 6);
 
--- --------------------------------------------------------
-
---
--- Структура таблицы `translations`
---
-
-DROP TABLE IF EXISTS `translations`;
 CREATE TABLE IF NOT EXISTS `translations` (
   `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `table_name` varchar(155) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -18917,13 +18599,6 @@ CREATE TABLE IF NOT EXISTS `translations` (
   UNIQUE KEY `translations_table_name_column_name_foreign_key_locale_unique` (`table_name`,`column_name`,`foreign_key`,`locale`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- --------------------------------------------------------
-
---
--- Структура таблицы `typpricaza`
---
-
-DROP TABLE IF EXISTS `typpricaza`;
 CREATE TABLE IF NOT EXISTS `typpricaza` (
   `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `deleted_at` timestamp NULL DEFAULT NULL,
@@ -18934,20 +18609,9 @@ CREATE TABLE IF NOT EXISTS `typpricaza` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Дамп данных таблицы `typpricaza`
---
-
 INSERT INTO `typpricaza` (`id`, `deleted_at`, `created_at`, `updated_at`, `name`, `obr`) VALUES
 (1, NULL, '2021-10-14 15:37:36', '2021-10-14 15:37:36', 'О переводе на следующий курс', 1);
 
--- --------------------------------------------------------
-
---
--- Структура таблицы `typ_ball`
---
-
-DROP TABLE IF EXISTS `typ_ball`;
 CREATE TABLE IF NOT EXISTS `typ_ball` (
   `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `deleted_at` timestamp NULL DEFAULT NULL,
@@ -18958,10 +18622,6 @@ CREATE TABLE IF NOT EXISTS `typ_ball` (
   `obr` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Дамп данных таблицы `typ_ball`
---
 
 INSERT INTO `typ_ball` (`id`, `deleted_at`, `created_at`, `updated_at`, `num`, `name`, `obr`) VALUES
 (1, NULL, '2021-10-09 15:28:35', '2021-10-09 15:28:35', 2, 'Неудовлетворительно', 1),
@@ -18975,13 +18635,6 @@ INSERT INTO `typ_ball` (`id`, `deleted_at`, `created_at`, `updated_at`, `num`, `
 (9, NULL, '2021-10-12 02:38:16', '2021-10-12 02:38:16', 5, 'Отлично', 2),
 (10, NULL, '2021-10-12 02:38:27', '2021-10-12 02:38:27', 6, 'Зачет', 2);
 
--- --------------------------------------------------------
-
---
--- Структура таблицы `typ_dann`
---
-
-DROP TABLE IF EXISTS `typ_dann`;
 CREATE TABLE IF NOT EXISTS `typ_dann` (
   `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `deleted_at` timestamp NULL DEFAULT NULL,
@@ -18994,10 +18647,6 @@ CREATE TABLE IF NOT EXISTS `typ_dann` (
   `shifr` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Дамп данных таблицы `typ_dann`
---
 
 INSERT INTO `typ_dann` (`id`, `deleted_at`, `created_at`, `updated_at`, `name`, `variant`, `obr`, `kategor`, `shifr`) VALUES
 (1, NULL, '2021-10-05 14:52:50', '2021-10-05 14:52:50', 'дата поступления', 1, 1, 2, NULL),
@@ -19026,13 +18675,6 @@ INSERT INTO `typ_dann` (`id`, `deleted_at`, `created_at`, `updated_at`, `name`, 
 (24, NULL, '2021-10-28 03:08:27', '2021-10-28 03:29:16', 'Место жительства (постоянно)', 0, 2, 3, 0),
 (25, NULL, '2021-10-28 03:28:46', '2021-10-28 03:29:37', 'Место жительство (временно)', 0, 2, 3, 0);
 
--- --------------------------------------------------------
-
---
--- Структура таблицы `users`
---
-
-DROP TABLE IF EXISTS `users`;
 CREATE TABLE IF NOT EXISTS `users` (
   `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
   `role_id` bigint(20) UNSIGNED DEFAULT NULL,
@@ -19051,24 +18693,13 @@ CREATE TABLE IF NOT EXISTS `users` (
   KEY `users_role_id_foreign` (`role_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Дамп данных таблицы `users`
---
-
 INSERT INTO `users` (`id`, `role_id`, `name`, `email`, `avatar`, `email_verified_at`, `password`, `remember_token`, `settings`, `created_at`, `updated_at`, `obr`) VALUES
 (0, NULL, 'prepod', '', 'users/default.png', NULL, '', NULL, NULL, NULL, NULL, NULL),
 (1, 1, '1', 'asb@mail.com', 'users/October2021/OCwJtRg3Ksh8KmYwHXj9.jpg', NULL, '$2y$10$pwSFQGZShb9PdDvYDhrWFunAh8v.BpecMBUApLQl/9m/tLVAwpjL2', NULL, NULL, '2021-09-25 15:47:17', '2021-10-11 03:08:46', 1),
 (2, 2, 'Балабанов Анатолий Сергеевич', 'asbcorp24@gmail.com', 'users/October2021/26y0xnDSRVRRHLUb1lZr.jpg', NULL, '$2y$10$kqnoGVzMNLvHZAXzA0XIJe8ezGWNCtCy4/JItY1AR5Id.Z/0ieQbu', NULL, NULL, '2021-09-30 14:46:03', '2021-10-11 03:08:12', 1),
-(3, 2, 'ГАПОУ «ККСАиГХ»', 'kgppk06@mail.ru', 'users/October2021/6hNK6Fg2sryQrmF4Imbl.png', NULL, '$2y$10$9lWGaXvZgqPNRZj8zyBaC./3j5UkrOyCQVAJNgyNbafgbP5K/32Ku', 'OwS16T49ZhgXY31gAFwwvMYK4CvmEkqT3EBvciGtk1xMymSDTRDl9JRLgwGu', NULL, '2021-10-12 02:34:55', '2021-10-12 02:34:55', 2),
+(3, 2, 'ГАПОУ «ККСАиГХ»', 'kgppk06@mail.ru', 'users/October2021/6hNK6Fg2sryQrmF4Imbl.png', NULL, '$2y$10$9lWGaXvZgqPNRZj8zyBaC./3j5UkrOyCQVAJNgyNbafgbP5K/32Ku', 'IAIrDno4K2tbOgZffVPNtJxxMfIwmraoP671sK8eZwiE7T9iREiTV30IzZxv', NULL, '2021-10-12 02:34:55', '2021-10-12 02:34:55', 2),
 (4, 2, 'Учебная часть', 'asb_corp@mail.ru', 'users/default.png', NULL, '$2y$10$VQHlnc.v1po5j5tftw02d.xotvxZVK0rq7nnb1ngMcHBZ.G.QPXa6', NULL, NULL, '2021-10-25 07:18:21', '2021-10-25 07:18:21', 1);
 
--- --------------------------------------------------------
-
---
--- Структура таблицы `user_roles`
---
-
-DROP TABLE IF EXISTS `user_roles`;
 CREATE TABLE IF NOT EXISTS `user_roles` (
   `user_id` bigint(20) UNSIGNED NOT NULL,
   `role_id` bigint(20) UNSIGNED NOT NULL,
@@ -19077,42 +18708,22 @@ CREATE TABLE IF NOT EXISTS `user_roles` (
   KEY `user_roles_role_id_index` (`role_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Ограничения внешнего ключа сохраненных таблиц
---
 
---
--- Ограничения внешнего ключа таблицы `data_rows`
---
 ALTER TABLE `data_rows`
   ADD CONSTRAINT `data_rows_data_type_id_foreign` FOREIGN KEY (`data_type_id`) REFERENCES `data_types` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
---
--- Ограничения внешнего ключа таблицы `menu_items`
---
 ALTER TABLE `menu_items`
   ADD CONSTRAINT `menu_items_menu_id_foreign` FOREIGN KEY (`menu_id`) REFERENCES `menus` (`id`) ON DELETE CASCADE;
 
---
--- Ограничения внешнего ключа таблицы `permission_role`
---
 ALTER TABLE `permission_role`
   ADD CONSTRAINT `permission_role_permission_id_foreign` FOREIGN KEY (`permission_id`) REFERENCES `permissions` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `permission_role_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE;
 
---
--- Ограничения внешнего ключа таблицы `users`
---
 ALTER TABLE `users`
   ADD CONSTRAINT `users_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`);
 
---
--- Ограничения внешнего ключа таблицы `user_roles`
---
 ALTER TABLE `user_roles`
   ADD CONSTRAINT `user_roles_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `user_roles_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+

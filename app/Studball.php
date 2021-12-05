@@ -5,6 +5,7 @@ namespace App;
 use App\Scopes\AncientScope;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 
 class Studball extends Model
@@ -24,7 +25,8 @@ class Studball extends Model
     {
         parent::boot();
         self::creating(function ($model) {
-            $model->obr = Auth::user()->obr;
+            $res=Session::get('obr',null);
+            $model->obr = Auth::user()?Auth::user()->obr:$res;
         });
         static::addGlobalScope(new AncientScope);
     }

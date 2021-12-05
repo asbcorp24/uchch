@@ -21,6 +21,7 @@ Route::get('pnagr','u_nagr@index');//->middleware('userin');;
 Route::get('setgod','u_api@setgod');//->middleware('userin');;
 Route::get('uspev/{grupp?}/{predmet?}','u_uspev@index');
 Route::get('vedomost_add/{grupp?}/{predmet?}','u_vedomost@index');
+Route::post('vedomost_add/{grupp?}/{predmet?}','u_vedomost@index');
 Route::post('vedapi','u_vedomost@api');
 
 

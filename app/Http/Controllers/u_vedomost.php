@@ -7,6 +7,7 @@ use App\Prepod;
 use App\Scopes\AncientScope;
 use App\Scopes\godScope;
 use App\Shablon;
+use App\Studball;
 use App\TipEkz;
 use App\Vedomheader;
 use Illuminate\Http\Request;
@@ -41,9 +42,21 @@ $tip_ekz=TipEkz::withoutGlobalScope(AncientScope::class)->where('obr',$obr)->get
 
     public function api(Request $req){
         $md=$req->md;
-if ($md == 26) {
-$gr=Shablon::find($req->gatt);
 
+        if ($md == 28) {
+          $st=Studball::where('predmet_id',$req->pid)->where('stud_id',$req->sid)->get()->first();
+          if($st!=null) $st->delete();
+          $st=new Studball();
+          $st->predmet_id=$req->pid;
+          $st->stud_id=$req->sid;
+          $st->ball=$req->ball;
+     $st->save();
+return $st;
+            }
+
+            if ($md == 26) {
+$gr=Shablon::withoutGlobalScope(AncientScope::class)->find($req->gatt);
+if ($gr==null) return 1;
 $gr->dat_ekz=$req->datt;
 $gr->tip_att=$req->tatt;
 

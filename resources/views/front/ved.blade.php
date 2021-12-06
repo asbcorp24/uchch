@@ -70,7 +70,7 @@
                                         @endforeach
                                     </select>
                                     <label>Дата аттестации</label>
-                                    <input type="date" class="form-control" id="datt">
+                                    <input type="date" class="form-control" id="datt" value="{{date('Y-m-d')}}">
                                     <br>
                                     <button class="btn btn-info form-control" id="vbr">Выбрать</button>
                                 </div>
@@ -82,8 +82,8 @@
                         <div class="col-md-12">
                             <div class="card">
 
-                                <div class="card-body-body" id="pz">
-
+                                <div class="card-body-body" id="pz" style="padding: 25px">
+<h2 id="nan"></h2>
 
                                     <div class="table-responsive">
 
@@ -160,29 +160,34 @@
         $.post('{{url('vedapi')}}', {
             'md': 26,
             'gatt': $('#gatt').val(),
+            'natt': $('#gatt').text(),
+            'ntatt': $('#tatt').text(),
             'tatt': $('#tatt').val(),
             'datt': $('#datt').val(),
             '_token': '{{ csrf_token() }}'
         }, function (data) {
+            $('#nan').text(data[1].ntatt+' '+data[1].natt+' '+data[1].dat_ekz)
             $('#tble').empty();
             data[0].forEach(function (item, i, arr) {
                 sl = item.studid;
-                $('#tble').append('<tr>' + '<td>' + item.fam + ' ' + item.name + ' ' + item.otch + ' ' + '</td>' + '<td> <input  type="text"  data-sid="'+sl+'"  data-pid="'+item.predmet_id+'" id="slk' + sl + '"></td>' + '</tr>');
+                $('#tble').append('<tr>' + '<td>' + item.fam + ' ' + item.name + ' ' + item.otch + ' ' + '</td>' + '<td> <input  type="text" data-id="'+item.id+'"  data-sid="'+sl+'"  data-pid="'+item.predmet_id+'" id="slk' + sl + '"></td>' + '</tr>');
                $("#slk" + sl).slider({
                     ticks: [1, 2, 3, 4, 5,6],
                     ticks_labels: ['н/а', '2', '3', '4', '5','зач'],
                     ticks_snap_bounds: 30,
-                   value:1,
+                   value:item.ball,
                 });
                 $("#slk" + sl).on("change", function(sliderValue) {
                  ball=sliderValue.value.newValue;
                   sid=$(this).data('sid');
                   pid=$(this).data('pid');
+                    id=$(this).data('id');
                     $.post('{{url('vedapi')}}', {
                         'md': '28',
                         'ball': ball,
                         'sid': sid,
                         'pid': pid,
+                        'id': id,
                         '_token': '{{ csrf_token() }}'
                     }, function (data) {
 

@@ -32,6 +32,7 @@ class u_vedomost extends Controller
             ->join('predmet', 'predmet.id', '=', 'nagr.predmet')
             ->select('grupp.nazv as gnazv', 'predmet.nazv', 'nagr.semestr', 'shablon.id')
             ->where('shablon.prepod', $prep)
+            ->where('shablon.act',1)
             ->get();
 
 
@@ -44,7 +45,12 @@ class u_vedomost extends Controller
     public function api(Request $req)
     {
         $md = $req->md;
-
+        if ($md == 31) {
+            $st = Shablon::find($req->id);
+        $st->act=$req->db;
+            $st->save();
+            return $st;
+        }
         if ($md == 28) {
             $st = Studball::where('predmet_id', $req->pid)->where('stud_id', $req->sid)->get()->first();
             if ($st != null) $st->delete();

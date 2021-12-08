@@ -155,12 +155,15 @@
 
 
 <script>
+    $('#gatt').change(function (){
+        console.log($(this).val());
+    })
     $('#vbr').click(function () {
 
         $.post('{{url('vedapi')}}', {
             'md': 26,
             'gatt': $('#gatt').val(),
-            'natt': $('#gatt').text(),
+            'natt': $('#gatt option:selected').text(),
             'ntatt': $('#tatt').text(),
             'tatt': $('#tatt').val(),
             'datt': $('#datt').val(),

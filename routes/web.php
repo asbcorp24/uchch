@@ -23,6 +23,7 @@ Route::get('uspev/{grupp?}/{predmet?}','u_uspev@index');
 Route::get('vedomost_add/{grupp?}/{predmet?}','u_vedomost@index');
 Route::post('vedomost_add/{grupp?}/{predmet?}','u_vedomost@index');
 Route::post('vedapi','u_vedomost@api');
+Route::any('studinfo/{id?}','lkstd@index');
 
 
 Route::group(['prefix' => 'admin'], function () {
